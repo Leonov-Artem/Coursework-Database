@@ -36,9 +36,11 @@ namespace CourseWork
             MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
             return (bool)command.ExecuteScalar();
         }
-        public static void DeleteUser(string user_name)
+        public static bool DeleteUser(MySqlConnection conn, string login, string password)
         {
-            
+            string sql = $"select delete_user('{login}', '{password}')";
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            return (bool)command.ExecuteScalar();
         }
         public static bool UserExist(MySqlConnection conn, string login, string password)
         {
