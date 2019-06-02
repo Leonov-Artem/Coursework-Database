@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace CourseWork
 {
@@ -15,6 +16,21 @@ namespace CourseWork
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection("people");
+
+            // устанавливаем соединение с БД
+            conn.Open();
+            string sql = "SELECT firstname FROM students ";
+
+            MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
+            string name = command.ExecuteScalar().ToString();       // выполняем запрос и получаем ответ
+            Console.WriteLine(name);
+
+            conn.Close();
         }
     }
 }
