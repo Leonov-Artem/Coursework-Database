@@ -20,15 +20,14 @@ namespace CourseWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = ConnectToMySQL.GetDBConnection("people");
+            MySqlConnection conn = ConnectToMySQL.GetDBConnection();
 
             // устанавливаем соединение с БД
             conn.Open();
-            string sql = "SELECT firstname FROM students ";
+            string sql = "SELECT description FROM films where id = 1 ";
 
             MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
             string name = command.ExecuteScalar().ToString();       // выполняем запрос и получаем ответ
-            Console.WriteLine(name);
 
             conn.Close();
         }
