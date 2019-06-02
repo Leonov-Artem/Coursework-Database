@@ -21,10 +21,11 @@ namespace CourseWork
         private void button1_Click(object sender, EventArgs e)
         {
             MySqlConnection conn = ConnectToMySQL.GetDBConnection();
-
-            // устанавливаем соединение с БД
             conn.Open();
-            string sql = "SELECT description FROM films where id = 1 ";
+
+            bool exist = Privilege.UserExist(conn, "херня", "1234");
+          
+            string sql = "SELECT street_name FROM addresses where id = 1 ";
 
             MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
             string name = command.ExecuteScalar().ToString();       // выполняем запрос и получаем ответ
