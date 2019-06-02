@@ -20,7 +20,7 @@ namespace CourseWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = DBUtils.GetDBConnection("people");
+            MySqlConnection conn = ConnectToMySQL.GetDBConnection("people");
 
             // устанавливаем соединение с БД
             conn.Open();
