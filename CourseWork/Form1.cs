@@ -23,7 +23,7 @@ namespace CourseWork
             MySqlConnection conn = ConnectToMySQL.GetDBConnection();
             conn.Open();
 
-            bool exist = Privilege.UserExist(conn, "херня", "1234");
+            Privilege.AddUser(conn, "log", "pass", Privilege.Position.Cashier);
           
             string sql = "SELECT street_name FROM addresses where id = 1 ";
 

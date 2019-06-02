@@ -16,14 +16,11 @@ namespace CourseWork
             Accountant
         }
 
-        public static void AddUser( string login, string password, Position position)
+        public static void AddUser(MySqlConnection conn, string login, string password, Position position)
         {
-            var conn = ConnectToMySQL.GetDBConnection();
-            conn.Open();
+            string sql = $"CALL add_new_user('{login}', '{password}', ";
 
-            string sql = "INSERT INTO users (login, password, position) " +
-                        $"VALUES ('{login}', '{password}', ";
-            switch (position)
+            switch(position)
             {
                 case Position.Administrator:
                     sql += "'админ');";
@@ -38,20 +35,11 @@ namespace CourseWork
 
             MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
             command.ExecuteNonQuery();
-            conn.Close();
         }
         public static void DeleteUser(string user_name)
         {
-            MySqlConnection conn = ConnectToMySQL.GetDBConnection();
-            conn.Open();
-
-            string sql = $"DROP USER '{user_name}';";
-            MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
-            command.ExecuteNonQuery();
-
-            conn.Close();
+            
         }
-
         public static bool UserExist(MySqlConnection conn, string login, string password)
         {
             string sql = $"SELECT check_user_existence('{login}', '{password}');";
