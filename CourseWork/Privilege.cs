@@ -16,9 +16,9 @@ namespace CourseWork
             Accountant
         }
 
-        public static void AddUser(MySqlConnection conn, string login, string password, Position position)
+        public static bool AddUser(MySqlConnection conn, string login, string password, Position position)
         {
-            string sql = $"CALL add_new_user('{login}', '{password}', ";
+            string sql = $"SELECT add_new_user('{login}', '{password}', ";
 
             switch(position)
             {
@@ -34,7 +34,7 @@ namespace CourseWork
             }
 
             MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
-            command.ExecuteNonQuery();
+            return (bool)command.ExecuteScalar();
         }
         public static void DeleteUser(string user_name)
         {
