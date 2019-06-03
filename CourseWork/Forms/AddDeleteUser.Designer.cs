@@ -127,25 +127,26 @@
             // 
             this.groupBox2.Controls.Add(this.delete_button);
             this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Location = new System.Drawing.Point(434, 25);
+            this.groupBox2.Location = new System.Drawing.Point(381, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(341, 413);
+            this.groupBox2.Size = new System.Drawing.Size(252, 413);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Удаление пользователя";
             // 
             // listBox1
             // 
+            this.listBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
+            this.listBox1.ItemHeight = 20;
             this.listBox1.Location = new System.Drawing.Point(16, 38);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(304, 212);
+            this.listBox1.Size = new System.Drawing.Size(226, 204);
             this.listBox1.TabIndex = 0;
             // 
             // delete_button
             // 
-            this.delete_button.Location = new System.Drawing.Point(214, 266);
+            this.delete_button.Location = new System.Drawing.Point(136, 256);
             this.delete_button.Name = "delete_button";
             this.delete_button.Size = new System.Drawing.Size(106, 32);
             this.delete_button.TabIndex = 1;
@@ -157,7 +158,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(644, 450);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "AddDeleteUser";

@@ -20,7 +20,7 @@ namespace CourseWork
             InitializeComponent();
             this.connection = connection;
 
-            AddItemsToComboBox();
+            AddItemsToListBox();
         }
 
         private void AddNewUser_button_Click(object sender, EventArgs e)
@@ -35,7 +35,10 @@ namespace CourseWork
                 bool successfully = Privilege.AddUser(connection, login, password, position);
 
                 if (successfully)
+                {
                     MessageBox.Show("Пользователь добавлен!", "Уведомление");
+                    AddItemsToListBox();
+                }
                 else
                 {
                     MessageBox.Show("Пользователь с таким паролем уже существует!", "Ошибка!");
@@ -50,8 +53,19 @@ namespace CourseWork
         }
         private void delete_button_Click(object sender, EventArgs e)
         {
+            int index = listBox1.SelectedIndex;
+            if (index != -1)
+            {
+                string item = listBox1.SelectedItem.ToString();
+                listBox1.Items.Remove(item);
 
+                string[] loginPassword = item.Split(new string[] { " ", "(", ")" }, StringSplitOptions.RemoveEmptyEntries);
+                Privilege.DeleteUser(connection, loginPassword[0], loginPassword[1]);
+            }
+            else
+                MessageBox.Show("Выберите строку из списка!", "Ошибка!");
         }
+
         ///////////////////////////////////////////////////////////////////////////
         private void ClearFields()
         {
@@ -93,12 +107,18 @@ namespace CourseWork
 
             return list.ToArray();
         }
-        private void AddItemsToComboBox()
+        private void AddItemsToListBox()
         {
+            ClearListBox();
             string[] items = GetItemsFromUserTable();
 
             foreach(var item in items)
                 listBox1.Items.Add(item);
+        }
+        private void ClearListBox()
+        {
+            if (listBox1.Items.Count != 0)
+                listBox1.Items.Clear();
         }
     }
 }
