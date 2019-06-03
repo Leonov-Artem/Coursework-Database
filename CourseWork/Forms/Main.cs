@@ -43,9 +43,25 @@ namespace CourseWork
             authorization.ShowDialog();
 
             currentUser = authorization.GetCurrentUser();
+            SetStatusBar(currentUser);
 
             if (currentUser.Position != Position.Administrator)
-                addDelete_button.Visible = false;
+                addDelete_button.Enabled = false;
+        }
+        private void SetStatusBar(CurrentUser currentUser)
+        {
+            switch (currentUser.Position)
+            {
+                case Position.Administrator:
+                    this.Text = "(Администратор)";
+                    break;
+                case Position.Cashier:
+                    this.Text = "(Кассир)";
+                    break;
+                case Position.Accountant:
+                    this.Text = "(Бухгалтер)";
+                    break;
+            }
         }
     }
 }
