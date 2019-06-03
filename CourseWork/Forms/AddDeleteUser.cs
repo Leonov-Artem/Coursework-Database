@@ -14,7 +14,6 @@ namespace CourseWork
     public partial class AddDeleteUser : Form
     {
         MySqlConnection connection;
-        Position selectedPosition;
 
         public AddDeleteUser(MySqlConnection connection)
         {
@@ -26,35 +25,25 @@ namespace CourseWork
         {
             string login = GetLoginFromTextBox();
             string password = GetPasswordFromTextBox();
-            Position position = GetPositionFromTextBox();
+            var item = position_comboBox.SelectedItem;
 
-            if (login != "" && password != "")
+            if (login != "" && password != "" && item != null)
             {
+                Position position = GetSelectedPosition(item.ToString());
                 bool successfully = Privilege.AddUser(connection, login, password, position);
 
                 if (successfully)
                     MessageBox.Show("Пользователь добавлен!", "Уведомление");
                 else
-                    MessageBox.Show("Пользователь с такой учетной записью уже существует!", "Ошибка!");
+                {
+                    MessageBox.Show("Пользователь с таким паролем уже существует!", "Ошибка!");
+                    ClearFields();
+                }
             }
             else
-                MessageBox.Show("Введите логин, пароль и должность!", "Ошибка!");
-        }
-        private void position_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string selectedState = position_comboBox.SelectedItem.ToString();
-            
-            switch(selectedState)
             {
-                case "Администратор":
-                    selectedPosition = Position.Administrator;
-                    break;
-                case "Кассир":
-                    selectedPosition = Position.Cashier;
-                    break;
-                case "Бухгалтер":
-                    selectedPosition = Position.Accountant;
-                    break;
+                MessageBox.Show("Введите логин, пароль и должность!", "Ошибка!");
+                ClearFields();
             }
         }
 
@@ -66,18 +55,24 @@ namespace CourseWork
         }
         private string GetLoginFromTextBox() => login_textBox.Text;
         private string GetPasswordFromTextBox() => password_textBox.Text;
-        private Position GetPositionFromTextBox()
+        private Position GetSelectedPosition(string position)
         {
-            string selectedState = position_comboBox.SelectedItem.ToString();
+            Position selectedPosition = Position.Administrator;
 
-            switch (selectedState)
+            switch (position)
             {
-                case "Администратор": return Position.Administrator;
-                case "Кассир": return Position.Cashier;
-                case "Бухгалтер": return Position.Accountant;
+                case "Администратор":
+                    selectedPosition = Position.Administrator;
+                    break;
+                case "Кассир":
+                    selectedPosition = Position.Cashier;
+                    break;
+                case "Бухгалтер":
+                    selectedPosition = Position.Accountant;
+                    break;
             }
 
-            throw new Exception("Должность не выбрана!");
+            return selectedPosition;
         }
     }
 }

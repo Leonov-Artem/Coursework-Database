@@ -77,7 +77,6 @@
             this.position_comboBox.Name = "position_comboBox";
             this.position_comboBox.Size = new System.Drawing.Size(159, 24);
             this.position_comboBox.TabIndex = 5;
-            this.position_comboBox.SelectedIndexChanged += new System.EventHandler(this.position_comboBox_SelectedIndexChanged);
             // 
             // password_textBox
             // 

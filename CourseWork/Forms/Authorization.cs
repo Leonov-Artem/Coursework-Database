@@ -55,7 +55,5 @@ namespace CourseWork
             Position position = Privilege.GetUserPosition(connection, Login, Password);
             return new CurrentUser(Login, Password, position);
         }
-
-        private void Exit_button_Click(object sender, EventArgs e) => Application.Exit();
     }
 }

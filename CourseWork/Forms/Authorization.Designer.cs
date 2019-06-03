@@ -33,7 +33,6 @@
             this.login_textBox = new System.Windows.Forms.TextBox();
             this.password_textBox = new System.Windows.Forms.TextBox();
             this.login_button = new System.Windows.Forms.Button();
-            this.Exit_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -73,7 +72,7 @@
             // 
             // login_button
             // 
-            this.login_button.Location = new System.Drawing.Point(200, 188);
+            this.login_button.Location = new System.Drawing.Point(200, 190);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(75, 27);
             this.login_button.TabIndex = 4;
@@ -81,23 +80,11 @@
             this.login_button.UseVisualStyleBackColor = true;
             this.login_button.Click += new System.EventHandler(this.login_button_Click);
             // 
-            // Exit_button
-            // 
-            this.Exit_button.Location = new System.Drawing.Point(435, 311);
-            this.Exit_button.Name = "Exit_button";
-            this.Exit_button.Size = new System.Drawing.Size(75, 27);
-            this.Exit_button.TabIndex = 5;
-            this.Exit_button.Text = "Выход";
-            this.Exit_button.UseVisualStyleBackColor = true;
-            this.Exit_button.Click += new System.EventHandler(this.Exit_button_Click);
-            // 
             // Authorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(531, 350);
-            this.ControlBox = false;
-            this.Controls.Add(this.Exit_button);
             this.Controls.Add(this.login_button);
             this.Controls.Add(this.password_textBox);
             this.Controls.Add(this.login_textBox);
@@ -118,6 +105,5 @@
         private System.Windows.Forms.TextBox login_textBox;
         private System.Windows.Forms.TextBox password_textBox;
         private System.Windows.Forms.Button login_button;
-        private System.Windows.Forms.Button Exit_button;
     }
 }
