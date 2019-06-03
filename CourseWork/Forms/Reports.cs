@@ -17,5 +17,11 @@ namespace CourseWork
             InitializeComponent();
         }
 
+        private void backwards_button_Click(object sender, EventArgs e) => Close();
+
+        private void view_button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Кинотеатр: 'Победа'\nАдрес: ул. Мира 32", "Результат запроса");
+        }
     }
 }

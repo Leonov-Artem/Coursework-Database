@@ -16,5 +16,12 @@ namespace CourseWork
         {
             InitializeComponent();
         }
+
+        private void backwards_button_Click(object sender, EventArgs e) => Close();
+
+        private void forward_button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

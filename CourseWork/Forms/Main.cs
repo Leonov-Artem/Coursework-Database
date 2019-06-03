@@ -33,11 +33,13 @@ namespace CourseWork
         }   
         private void Reports_button_Click(object sender, EventArgs e)
         {
-
+            Reports reports = new Reports();
+            reports.ShowDialog();
         }
         private void InputChangeData_button_Click(object sender, EventArgs e)
         {
-
+            ChangeInformation changeInformation = new ChangeInformation();
+            changeInformation.ShowDialog();
         }
         private void exit_button_Click(object sender, EventArgs e) => Application.Exit();
         private void changeUser_button_Click(object sender, EventArgs e) => RunAuthorization(connection);
