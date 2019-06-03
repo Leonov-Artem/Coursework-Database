@@ -30,10 +30,16 @@ namespace CourseWork
         {
             AddDeleteUser addDeleteUser = new AddDeleteUser(connection);
             addDeleteUser.ShowDialog();
+        }   
+        private void Reports_button_Click(object sender, EventArgs e)
+        {
+
         }
+        private void InputChangeData_button_Click(object sender, EventArgs e)
+        {
 
+        }
         private void exit_button_Click(object sender, EventArgs e) => Application.Exit();
-
         private void changeUser_button_Click(object sender, EventArgs e) => RunAuthorization(connection);
 
         /////////////////////////////////////////////////////////////////////

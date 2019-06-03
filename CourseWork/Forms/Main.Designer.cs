@@ -28,30 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reference_button = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.InputChangeData_button = new System.Windows.Forms.Button();
+            this.Reports_button = new System.Windows.Forms.Button();
             this.changeUser_button = new System.Windows.Forms.Button();
             this.exit_button = new System.Windows.Forms.Button();
             this.addDelete_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // reference_button
+            // InputChangeData_button
             // 
-            this.reference_button.Location = new System.Drawing.Point(136, 156);
-            this.reference_button.Name = "reference_button";
-            this.reference_button.Size = new System.Drawing.Size(293, 35);
-            this.reference_button.TabIndex = 0;
-            this.reference_button.Text = "Ввод/иземение данных";
-            this.reference_button.UseVisualStyleBackColor = true;
+            this.InputChangeData_button.Location = new System.Drawing.Point(136, 156);
+            this.InputChangeData_button.Name = "InputChangeData_button";
+            this.InputChangeData_button.Size = new System.Drawing.Size(293, 35);
+            this.InputChangeData_button.TabIndex = 0;
+            this.InputChangeData_button.Text = "Ввод/удаление/иземение данных";
+            this.InputChangeData_button.UseVisualStyleBackColor = true;
+            this.InputChangeData_button.Click += new System.EventHandler(this.InputChangeData_button_Click);
             // 
-            // button2
+            // Reports_button
             // 
-            this.button2.Location = new System.Drawing.Point(136, 206);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(293, 34);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Отчеты";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Reports_button.Location = new System.Drawing.Point(136, 206);
+            this.Reports_button.Name = "Reports_button";
+            this.Reports_button.Size = new System.Drawing.Size(293, 34);
+            this.Reports_button.TabIndex = 1;
+            this.Reports_button.Text = "Отчеты";
+            this.Reports_button.UseVisualStyleBackColor = true;
+            this.Reports_button.Click += new System.EventHandler(this.Reports_button_Click);
             // 
             // changeUser_button
             // 
@@ -91,8 +93,8 @@
             this.Controls.Add(this.addDelete_button);
             this.Controls.Add(this.exit_button);
             this.Controls.Add(this.changeUser_button);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.reference_button);
+            this.Controls.Add(this.Reports_button);
+            this.Controls.Add(this.InputChangeData_button);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главное окно";
@@ -102,8 +104,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button reference_button;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button InputChangeData_button;
+        private System.Windows.Forms.Button Reports_button;
         private System.Windows.Forms.Button changeUser_button;
         private System.Windows.Forms.Button exit_button;
         private System.Windows.Forms.Button addDelete_button;
