@@ -14,6 +14,7 @@ namespace CourseWork
     public partial class Form1 : Form
     {
         MySqlConnection conn;
+        CurrentUser currentUser;
 
         public Form1()
         {
@@ -22,8 +23,10 @@ namespace CourseWork
             conn = ConnectToMySQL.GetDBConnection();
             conn.Open();
 
-            Form auto = new Authorization(conn);
-            auto.ShowDialog();
+            Authorization authorization = new Authorization(conn);
+            authorization.ShowDialog();
+
+            currentUser = authorization.GetCurrentUser();
         }
 
         private void button1_Click(object sender, EventArgs e)

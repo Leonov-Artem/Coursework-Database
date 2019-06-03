@@ -9,13 +9,6 @@ namespace CourseWork
 {
     static class Privilege
     {
-        public enum Position
-        {
-            Administrator,
-            Cashier,
-            Accountant
-        }
-
         public static bool AddUser(MySqlConnection conn, string login, string password, Position position)
         {
             string sql = $"SELECT add_new_user('{login}', '{password}', ";
@@ -47,6 +40,21 @@ namespace CourseWork
             string sql = $"SELECT check_user_existence('{login}', '{password}');";
             MySqlCommand command = new MySqlCommand(sql, conn); 
             return (bool)command.ExecuteScalar();
+        }
+        public static Position GetUserPosition(MySqlConnection conn, string login, string password)
+        {
+            string sql = $"SELECT get_user_position('{login}', '{password}');";
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            string pos = command.ExecuteScalar().ToString();
+            
+            switch(pos)
+            {
+                case "админ": return Position.Administrator;
+                case "кассир": return Position.Cashier;
+                case "бухгалтер": return Position.Accountant;
+            }
+
+            throw new Exception("Пользователь не найден!");
         }
     }
 }
