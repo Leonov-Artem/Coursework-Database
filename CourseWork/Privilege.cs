@@ -38,7 +38,7 @@ namespace CourseWork
         }
         public static bool DeleteUser(MySqlConnection conn, string login, string password)
         {
-            string sql = $"select delete_user('{login}', '{password}')";
+            string sql = $"SELECT delete_user('{login}', '{password}');";
             MySqlCommand command = new MySqlCommand(sql, conn);
             return (bool)command.ExecuteScalar();
         }

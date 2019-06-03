@@ -16,6 +16,8 @@ namespace CourseWork
         public Form1()
         {
             InitializeComponent();
+            Form auto = new Authorization();
+            auto.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,7 +26,7 @@ namespace CourseWork
             conn.Open();
 
             bool fdf = Privilege.DeleteUser(conn, "log", "pass");
-          
+
             string sql = "SELECT street_name FROM addresses where id = 1 ";
 
             MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
