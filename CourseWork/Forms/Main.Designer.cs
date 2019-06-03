@@ -59,7 +59,7 @@
             this.changeUser_button.Name = "changeUser_button";
             this.changeUser_button.Size = new System.Drawing.Size(182, 44);
             this.changeUser_button.TabIndex = 2;
-            this.changeUser_button.Text = "Зайди под другой учетной записью";
+            this.changeUser_button.Text = "Зайти под другой учетной записью";
             this.changeUser_button.UseVisualStyleBackColor = true;
             this.changeUser_button.Click += new System.EventHandler(this.changeUser_button_Click);
             // 

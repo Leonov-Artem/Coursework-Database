@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.AddNewUser_button = new System.Windows.Forms.Button();
+            this.position_comboBox = new System.Windows.Forms.ComboBox();
+            this.password_textBox = new System.Windows.Forms.TextBox();
+            this.login_textBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.AddNewUser_button);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.position_comboBox);
+            this.groupBox1.Controls.Add(this.password_textBox);
+            this.groupBox1.Controls.Add(this.login_textBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -55,23 +55,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавление пользователя";
             // 
-            // label1
+            // AddNewUser_button
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Логин:";
+            this.AddNewUser_button.Location = new System.Drawing.Point(180, 163);
+            this.AddNewUser_button.Name = "AddNewUser_button";
+            this.AddNewUser_button.Size = new System.Drawing.Size(97, 37);
+            this.AddNewUser_button.TabIndex = 6;
+            this.AddNewUser_button.Text = "Добавить";
+            this.AddNewUser_button.UseVisualStyleBackColor = true;
+            this.AddNewUser_button.Click += new System.EventHandler(this.AddNewUser_button_Click);
             // 
-            // label2
+            // position_comboBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 17);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Пароль:";
+            this.position_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.position_comboBox.FormattingEnabled = true;
+            this.position_comboBox.Items.AddRange(new object[] {
+            "Администратор",
+            "Кассир",
+            "Бухгалтер"});
+            this.position_comboBox.Location = new System.Drawing.Point(118, 112);
+            this.position_comboBox.Name = "position_comboBox";
+            this.position_comboBox.Size = new System.Drawing.Size(159, 24);
+            this.position_comboBox.TabIndex = 5;
+            this.position_comboBox.SelectedIndexChanged += new System.EventHandler(this.position_comboBox_SelectedIndexChanged);
+            // 
+            // password_textBox
+            // 
+            this.password_textBox.Location = new System.Drawing.Point(118, 72);
+            this.password_textBox.Name = "password_textBox";
+            this.password_textBox.Size = new System.Drawing.Size(159, 22);
+            this.password_textBox.TabIndex = 4;
+            // 
+            // login_textBox
+            // 
+            this.login_textBox.Location = new System.Drawing.Point(118, 38);
+            this.login_textBox.Name = "login_textBox";
+            this.login_textBox.Size = new System.Drawing.Size(159, 22);
+            this.login_textBox.TabIndex = 3;
             // 
             // label3
             // 
@@ -82,41 +102,23 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Должность:";
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Location = new System.Drawing.Point(118, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 22);
-            this.textBox1.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 77);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 17);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Пароль:";
             // 
-            // textBox2
+            // label1
             // 
-            this.textBox2.Location = new System.Drawing.Point(118, 72);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(159, 22);
-            this.textBox2.TabIndex = 4;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Администратор",
-            "Кассир",
-            "Бухгалтер"});
-            this.comboBox1.Location = new System.Drawing.Point(118, 112);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(159, 24);
-            this.comboBox1.TabIndex = 5;
-            // 
-            // AddNewUser_button
-            // 
-            this.AddNewUser_button.Location = new System.Drawing.Point(180, 163);
-            this.AddNewUser_button.Name = "AddNewUser_button";
-            this.AddNewUser_button.Size = new System.Drawing.Size(97, 37);
-            this.AddNewUser_button.TabIndex = 6;
-            this.AddNewUser_button.Text = "Добавить";
-            this.AddNewUser_button.UseVisualStyleBackColor = true;
-            this.AddNewUser_button.Click += new System.EventHandler(this.AddNewUser_button_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Логин:";
             // 
             // AddDeleteUser
             // 
@@ -136,9 +138,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox position_comboBox;
+        private System.Windows.Forms.TextBox password_textBox;
+        private System.Windows.Forms.TextBox login_textBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

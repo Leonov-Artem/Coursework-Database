@@ -46,7 +46,8 @@ namespace CourseWork
             string sql = $"SELECT get_user_position('{login}', '{password}');";
             MySqlCommand command = new MySqlCommand(sql, conn);
             string pos = command.ExecuteScalar().ToString();
-            
+
+            Position position = Position.Accountant;
             switch(pos)
             {
                 case "админ": return Position.Administrator;
@@ -54,7 +55,7 @@ namespace CourseWork
                 case "бухгалтер": return Position.Accountant;
             }
 
-            throw new Exception("Пользователь не найден!");
+            return position;
         }
     }
 }
