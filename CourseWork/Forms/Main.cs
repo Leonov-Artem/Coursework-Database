@@ -13,18 +13,21 @@ namespace CourseWork
 {
     public partial class Form1 : Form
     {
+        MySqlConnection conn;
+
         public Form1()
         {
             InitializeComponent();
-            Form auto = new Authorization();
+
+            conn = ConnectToMySQL.GetDBConnection();
+            conn.Open();
+
+            Form auto = new Authorization(conn);
             auto.ShowDialog();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MySqlConnection conn = ConnectToMySQL.GetDBConnection();
-            conn.Open();
-
             bool fdf = Privilege.DeleteUser(conn, "log", "pass");
 
             string sql = "SELECT street_name FROM addresses where id = 1 ";
