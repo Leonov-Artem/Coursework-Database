@@ -23,9 +23,12 @@ namespace CourseWork
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            if (login_textBox.Text != "" || password_textBox.Text != "")
+            string login = GetLoginFromTextBox();
+            string password = GetPasswordFromTextBox();
+
+            if (login != "" || password != "")
             {
-                if (Privilege.UserExist(connection, login_textBox.Text, password_textBox.Text))
+                if (Privilege.UserExist(connection, login, password))
                     this.Hide();
                 else
                 {
@@ -37,10 +40,13 @@ namespace CourseWork
                 MessageBox.Show("Введите логин и пароль!", "Ошибка!");
         }
 
+        ///////////////////////////////////////////////////////////////////////////
         private void ClearFields()
         {
             login_textBox.Text = "";
             password_textBox.Text = "";
         }
+        private string GetLoginFromTextBox() => login_textBox.Text;
+        private string GetPasswordFromTextBox() => password_textBox.Text;
     }
 }
