@@ -19,6 +19,8 @@ namespace CourseWork
         {
             InitializeComponent();
             this.connection = connection;
+
+            AddItemsToComboBox();
         }
 
         private void AddNewUser_button_Click(object sender, EventArgs e)
@@ -46,7 +48,10 @@ namespace CourseWork
                 ClearFields();
             }
         }
+        private void delete_button_Click(object sender, EventArgs e)
+        {
 
+        }
         ///////////////////////////////////////////////////////////////////////////
         private void ClearFields()
         {
@@ -73,6 +78,27 @@ namespace CourseWork
             }
 
             return selectedPosition;
+        }
+
+        private string[] GetItemsFromUserTable()
+        {
+            string sql = "SELECT login, password FROM users";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<string> list = new List<string>();
+            while (reader.Read())
+                list.Add(reader[0] + " (" + reader[1] + ")");
+            reader.Close();
+
+            return list.ToArray();
+        }
+        private void AddItemsToComboBox()
+        {
+            string[] items = GetItemsFromUserTable();
+
+            foreach(var item in items)
+                listBox1.Items.Add(item);
         }
     }
 }

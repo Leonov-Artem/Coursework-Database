@@ -37,20 +37,20 @@
             // 
             // reference_button
             // 
-            this.reference_button.Location = new System.Drawing.Point(171, 156);
+            this.reference_button.Location = new System.Drawing.Point(136, 156);
             this.reference_button.Name = "reference_button";
-            this.reference_button.Size = new System.Drawing.Size(236, 35);
+            this.reference_button.Size = new System.Drawing.Size(293, 35);
             this.reference_button.TabIndex = 0;
-            this.reference_button.Text = "Ввод и иземение данных";
+            this.reference_button.Text = "Ввод/иземение данных";
             this.reference_button.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(171, 197);
+            this.button2.Location = new System.Drawing.Point(136, 206);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(236, 34);
+            this.button2.Size = new System.Drawing.Size(293, 34);
             this.button2.TabIndex = 1;
-            this.button2.Text = "Справка";
+            this.button2.Text = "Отчеты";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // changeUser_button
@@ -75,9 +75,9 @@
             // 
             // addDelete_button
             // 
-            this.addDelete_button.Location = new System.Drawing.Point(171, 103);
+            this.addDelete_button.Location = new System.Drawing.Point(136, 94);
             this.addDelete_button.Name = "addDelete_button";
-            this.addDelete_button.Size = new System.Drawing.Size(236, 47);
+            this.addDelete_button.Size = new System.Drawing.Size(293, 47);
             this.addDelete_button.TabIndex = 4;
             this.addDelete_button.Text = "Добавление/удаление пользователей";
             this.addDelete_button.UseVisualStyleBackColor = true;

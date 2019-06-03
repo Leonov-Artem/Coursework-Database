@@ -41,6 +41,7 @@ namespace CourseWork
             else
                 MessageBox.Show("Введите логин и пароль!", "Ошибка!");
         }
+        private void exit_button_Click(object sender, EventArgs e) => Application.Exit();
 
         ///////////////////////////////////////////////////////////////////////////
         private void ClearFields()
