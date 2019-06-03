@@ -13,32 +13,39 @@ namespace CourseWork
 {
     public partial class Form1 : Form
     {
-        MySqlConnection conn;
+        MySqlConnection connection;
         CurrentUser currentUser;
 
         public Form1()
         {
             InitializeComponent();
 
-            conn = ConnectToMySQL.GetDBConnection();
-            conn.Open();
+            connection = ConnectToMySQL.GetDBConnection();
+            connection.Open();
 
-            Authorization authorization = new Authorization(conn);
+            RunAuthorization(connection);
+        }
+
+        private void addDelete_button_Click(object sender, EventArgs e)
+        {
+            AddDeleteUser addDeleteUser = new AddDeleteUser(connection);
+            addDeleteUser.ShowDialog();
+        }
+
+        private void exit_button_Click(object sender, EventArgs e) => Application.Exit();
+
+        private void changeUser_button_Click(object sender, EventArgs e) => RunAuthorization(connection);
+
+        /////////////////////////////////////////////////////////////////////
+        private void RunAuthorization(MySqlConnection connection)
+        {
+            Authorization authorization = new Authorization(connection);
             authorization.ShowDialog();
 
             currentUser = authorization.GetCurrentUser();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            bool fdf = Privilege.DeleteUser(conn, "log", "pass");
-
-            string sql = "SELECT street_name FROM addresses where id = 1 ";
-
-            MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
-            string name = command.ExecuteScalar().ToString();       // выполняем запрос и получаем ответ
-
-            conn.Close();
+            if (currentUser.Position != Position.Administrator)
+                addDelete_button.Visible = false;
         }
     }
 }
