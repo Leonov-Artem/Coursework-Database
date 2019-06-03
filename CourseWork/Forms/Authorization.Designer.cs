@@ -39,7 +39,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(127, 101);
+            this.label1.Location = new System.Drawing.Point(101, 108);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 17);
             this.label1.TabIndex = 0;
@@ -48,7 +48,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(117, 143);
+            this.label2.Location = new System.Drawing.Point(91, 150);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 17);
             this.label2.TabIndex = 1;
@@ -57,7 +57,7 @@
             // login_textBox
             // 
             this.login_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.login_textBox.Location = new System.Drawing.Point(200, 101);
+            this.login_textBox.Location = new System.Drawing.Point(174, 108);
             this.login_textBox.Name = "login_textBox";
             this.login_textBox.Size = new System.Drawing.Size(220, 27);
             this.login_textBox.TabIndex = 2;
@@ -65,7 +65,7 @@
             // password_textBox
             // 
             this.password_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.password_textBox.Location = new System.Drawing.Point(200, 143);
+            this.password_textBox.Location = new System.Drawing.Point(174, 150);
             this.password_textBox.Name = "password_textBox";
             this.password_textBox.PasswordChar = '*';
             this.password_textBox.Size = new System.Drawing.Size(220, 27);
@@ -73,7 +73,7 @@
             // 
             // login_button
             // 
-            this.login_button.Location = new System.Drawing.Point(321, 186);
+            this.login_button.Location = new System.Drawing.Point(295, 193);
             this.login_button.Name = "login_button";
             this.login_button.Size = new System.Drawing.Size(99, 35);
             this.login_button.TabIndex = 4;
@@ -83,7 +83,7 @@
             // 
             // exit_button
             // 
-            this.exit_button.Location = new System.Drawing.Point(200, 186);
+            this.exit_button.Location = new System.Drawing.Point(174, 193);
             this.exit_button.Name = "exit_button";
             this.exit_button.Size = new System.Drawing.Size(99, 35);
             this.exit_button.TabIndex = 5;

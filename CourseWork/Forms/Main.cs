@@ -51,8 +51,7 @@ namespace CourseWork
             currentUser = authorization.GetCurrentUser();
             SetStatusBar(currentUser);
 
-            if (currentUser.Position != Position.Administrator)
-                addDelete_button.Enabled = false;
+            HideButtonsAccordingToPrivileges(currentUser);
         }
         private void SetStatusBar(CurrentUser currentUser)
         {
@@ -68,6 +67,25 @@ namespace CourseWork
                     this.Text = "(Бухгалтер)";
                     break;
             }
+        }
+        private void HideButtonsAccordingToPrivileges(CurrentUser currentUser)
+        {
+            switch(currentUser.Position)
+            {
+                case Position.Administrator:
+                    addDelete_button.Enabled = true;
+                    InputChangeData_button.Enabled = true;
+                    break;
+                case Position.Cashier:
+                    addDelete_button.Enabled = false;
+                    break;
+                case Position.Accountant:
+                    addDelete_button.Enabled = false;
+                    InputChangeData_button.Enabled = false;
+                    break;
+            }
+            if (currentUser.Position != Position.Administrator)
+                addDelete_button.Enabled = false;
         }
     }
 }
