@@ -40,7 +40,7 @@
             this.InputChangeData_button.Location = new System.Drawing.Point(136, 156);
             this.InputChangeData_button.Name = "InputChangeData_button";
             this.InputChangeData_button.Size = new System.Drawing.Size(293, 35);
-            this.InputChangeData_button.TabIndex = 0;
+            this.InputChangeData_button.TabIndex = 1;
             this.InputChangeData_button.Text = "Ввод/удаление/измение данных";
             this.InputChangeData_button.UseVisualStyleBackColor = true;
             this.InputChangeData_button.Click += new System.EventHandler(this.InputChangeData_button_Click);
@@ -50,7 +50,7 @@
             this.Reports_button.Location = new System.Drawing.Point(136, 206);
             this.Reports_button.Name = "Reports_button";
             this.Reports_button.Size = new System.Drawing.Size(293, 34);
-            this.Reports_button.TabIndex = 1;
+            this.Reports_button.TabIndex = 2;
             this.Reports_button.Text = "Отчеты";
             this.Reports_button.UseVisualStyleBackColor = true;
             this.Reports_button.Click += new System.EventHandler(this.Reports_button_Click);
@@ -60,7 +60,7 @@
             this.changeUser_button.Location = new System.Drawing.Point(273, 394);
             this.changeUser_button.Name = "changeUser_button";
             this.changeUser_button.Size = new System.Drawing.Size(182, 44);
-            this.changeUser_button.TabIndex = 2;
+            this.changeUser_button.TabIndex = 3;
             this.changeUser_button.Text = "Зайти под другой учетной записью";
             this.changeUser_button.UseVisualStyleBackColor = true;
             this.changeUser_button.Click += new System.EventHandler(this.changeUser_button_Click);
@@ -70,7 +70,7 @@
             this.exit_button.Location = new System.Drawing.Point(473, 394);
             this.exit_button.Name = "exit_button";
             this.exit_button.Size = new System.Drawing.Size(129, 44);
-            this.exit_button.TabIndex = 3;
+            this.exit_button.TabIndex = 4;
             this.exit_button.Text = "Выход";
             this.exit_button.UseVisualStyleBackColor = true;
             this.exit_button.Click += new System.EventHandler(this.exit_button_Click);
@@ -80,7 +80,7 @@
             this.addDelete_button.Location = new System.Drawing.Point(136, 94);
             this.addDelete_button.Name = "addDelete_button";
             this.addDelete_button.Size = new System.Drawing.Size(293, 47);
-            this.addDelete_button.TabIndex = 4;
+            this.addDelete_button.TabIndex = 0;
             this.addDelete_button.Text = "Добавление/удаление пользователей";
             this.addDelete_button.UseVisualStyleBackColor = true;
             this.addDelete_button.Click += new System.EventHandler(this.addDelete_button_Click);

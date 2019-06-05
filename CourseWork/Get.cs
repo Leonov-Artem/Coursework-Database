@@ -48,7 +48,7 @@ namespace CourseWork
         }
         public string AddressId(string street_name, string house_number)
         {
-            string sql = $"SELECT id FROM addresses WHERE street_name = '{street_name.ToLower()}' AND house_number = {house_number};";
+            string sql = $"SELECT get_address_id('{street_name}', '{house_number}');";
             MySqlCommand command = new MySqlCommand(sql, connection);
             return command.ExecuteScalar().ToString();
         }

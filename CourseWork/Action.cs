@@ -25,5 +25,11 @@ namespace CourseWork
             MySqlCommand command = new MySqlCommand(sql, connection);
             return (bool)command.ExecuteScalar();
         }
+        public bool AddNewCinema(string cinema_name, string category, string street, string house)
+        {
+            string sql = $"SELECT add_new_cinema('{cinema_name}', {category}, '{street}', '{house}');";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            return (bool)command.ExecuteScalar();
+        }
     }
 }
