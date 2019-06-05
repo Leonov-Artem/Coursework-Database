@@ -95,9 +95,10 @@
             this.Controls.Add(this.changeUser_button);
             this.Controls.Add(this.Reports_button);
             this.Controls.Add(this.InputChangeData_button);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Главное окно";
+            this.Text = "Главное меню";
             this.ResumeLayout(false);
 
         }

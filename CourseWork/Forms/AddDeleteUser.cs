@@ -120,5 +120,7 @@ namespace CourseWork
             if (listBox1.Items.Count != 0)
                 listBox1.Items.Clear();
         }
+
+        private void backwards_button_Click(object sender, EventArgs e) => Close();
     }
 }

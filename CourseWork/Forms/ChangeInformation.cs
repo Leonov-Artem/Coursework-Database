@@ -21,7 +21,6 @@ namespace CourseWork
 
         private void forward_button_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
