@@ -14,6 +14,7 @@ namespace CourseWork
     public partial class ChangeInformation : Form
     {
         MySqlConnection connection;
+        List<Control> controls = new List<Control>();
 
         public ChangeInformation(MySqlConnection connection)
         {
@@ -27,7 +28,7 @@ namespace CourseWork
         {
             RadioButton selected_information = SomeRadioButtonsChecked(information_groupBox.Controls);
             RadioButton selected_action = SomeRadioButtonsChecked(action_groupBox.Controls);
-
+            
             Get get = new Get(connection);
             Action action = new Action(connection);
 
@@ -41,7 +42,7 @@ namespace CourseWork
                     }
                     else if (selected_action.Text == "Изменить данные")
                     {
-                        string[] info = get.InfoAboutFilms();
+                        
                     }
                     else if (selected_action.Text == "Удалить данные")
                     {
@@ -82,7 +83,26 @@ namespace CourseWork
                     }
                     else if (selected_action.Text == "Удалить данные")
                     {
+                        ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
 
+                        if (comboBox != null)
+                        {
+                            string cinema = comboBox.SelectedItem.ToString();
+                            string[] split = cinema.Split(new char[] { ' ', '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                            GetFilmNameProdecerYear(split, out string film_name, out string producer, out string year);
+
+                            if (action.DeleteFIlm(film_name, producer, year))
+                            {
+                                MessageBox.Show($"Фильм '{film_name}' был успешно удален!", "Оповещение");
+                                comboBox.Items.Remove(cinema);
+                            }
+
+                            else
+                                MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
+                        }
+                        else
+                            MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
                     }
                 }
                 else if (selected_information.Text == "Сеансы")
@@ -128,6 +148,8 @@ namespace CourseWork
 
             if (radioButton.Checked)
             {
+                DeleteAllNewControls();
+
                 switch(radioButton.Text)
                 {
                     case "Кинотеатры":
@@ -135,6 +157,8 @@ namespace CourseWork
                         AddCinemasToComboBox(cinemas);
                         break;
                     case "Фильмы":
+                        string[] info = GetInfoAboutFilms();
+                        AddFilmsToComboBox(info);
                         break;
                     case "Сеансы":
                         break;
@@ -144,7 +168,9 @@ namespace CourseWork
             }
         }
 
-        //////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////
+        
+        ////////////////////ДЛЯ КИНОТЕАТРОВ//////////////////////////////////////////
         private string[] GetCinemasWithAddresses()
         {
             Get get = new Get(connection);
@@ -161,6 +187,12 @@ namespace CourseWork
             Label label = CreateAndAddCinemaLabel();
             ComboBox comboBox = CreateAndAddCinemaComboBox(label);
 
+            controls.Add(label);
+            controls.Add(comboBox);
+
+            int max = cinemas.Max(x => x.Length);
+            comboBox.Width = 5 * max + 30;
+
             foreach (var cinema in cinemas)
                 comboBox.Items.Add(cinema);
         }
@@ -170,6 +202,8 @@ namespace CourseWork
             label.Text = "Кинотеатры: ";
             label.Location = new Point(information_groupBox.Location.X, information_groupBox.Location.Y + information_groupBox.Size.Height + 10);
             Controls.Add(label);
+
+            controls.Add(label);
 
             return label;
         }
@@ -183,6 +217,66 @@ namespace CourseWork
             return comboBox;
         }
 
+        ////////////////////ДЛЯ ФИЛЬМОВ//////////////////////////////////////////////
+        private string[] GetInfoAboutFilms()
+        {
+            Get get = new Get(connection);
+            return get.InfoAboutFilms();
+        }
+        private void AddFilmsToComboBox(string[] films)
+        {
+            Label label = CreateAndAddFilmLabel();
+            ComboBox comboBox = CreateAndAddFilmComboBox(label);
+
+            controls.Add(label);
+            controls.Add(comboBox);
+
+            int max = films.Max(x => x.Length);
+            comboBox.Width = 5 * max + 30;
+
+            foreach (var film in films)
+                comboBox.Items.Add(film);
+        }
+        private Label CreateAndAddFilmLabel()
+        {
+            Label label = new Label();
+            label.Text = "Фильмы: ";
+            label.Location = new Point(information_groupBox.Location.X, information_groupBox.Location.Y + information_groupBox.Size.Height + 10);
+            Controls.Add(label);
+
+            return label;
+        }
+        private ComboBox CreateAndAddFilmComboBox(Label label)
+        {
+            ComboBox comboBox = new ComboBox();
+            comboBox.Location = new Point(label.Location.X + label.Width, label.Location.Y);
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            Controls.Add(comboBox);
+
+            return comboBox;
+        }
+        private void GetFilmNameProdecerYear(string[] split, out string film_name, out string producer, out string year)
+        {
+            year = split[split.Length - 1];
+            producer = split[split.Length - 3] + " " + split[split.Length - 2];
+
+            film_name = "";
+            for (int i = 0; i < split.Length - 3; i++)
+                film_name += split[i] + " ";
+
+            film_name =  film_name.Remove(film_name.Length - 1, 1);
+        }
+
+        private void DeleteAllNewControls()
+        {
+            if (controls.Count != 0)
+            {
+                foreach (var control in controls)
+                    Controls.Remove(control);
+            }
+
+            controls.Clear();
+        }
         private RadioButton SomeRadioButtonsChecked(Control.ControlCollection controls)
         {
             foreach(var control in controls)

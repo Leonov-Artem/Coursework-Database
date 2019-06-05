@@ -49,7 +49,7 @@
             this.information_groupBox.Controls.Add(this.radioButton3);
             this.information_groupBox.Controls.Add(this.radioButton2);
             this.information_groupBox.Controls.Add(this.radioButton1);
-            this.information_groupBox.Location = new System.Drawing.Point(84, 49);
+            this.information_groupBox.Location = new System.Drawing.Point(41, 50);
             this.information_groupBox.Name = "information_groupBox";
             this.information_groupBox.Size = new System.Drawing.Size(190, 151);
             this.information_groupBox.TabIndex = 0;
@@ -109,7 +109,7 @@
             this.action_groupBox.Controls.Add(this.radioButton7);
             this.action_groupBox.Controls.Add(this.radioButton6);
             this.action_groupBox.Controls.Add(this.radioButton5);
-            this.action_groupBox.Location = new System.Drawing.Point(301, 49);
+            this.action_groupBox.Location = new System.Drawing.Point(258, 50);
             this.action_groupBox.Name = "action_groupBox";
             this.action_groupBox.Size = new System.Drawing.Size(196, 151);
             this.action_groupBox.TabIndex = 1;

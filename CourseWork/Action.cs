@@ -19,5 +19,11 @@ namespace CourseWork
             MySqlCommand command = new MySqlCommand(sql, connection);
             return (bool)command.ExecuteScalar();
         }
+        public bool DeleteFIlm(string film_name, string producer, string year)
+        {
+            string sql = $"select delete_film('{film_name}', '{producer}', '{year}');";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            return (bool)command.ExecuteScalar();
+        }
     }
 }
