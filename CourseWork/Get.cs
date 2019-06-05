@@ -46,6 +46,12 @@ namespace CourseWork
 
             return result;
         }
+        public string AddressId(string street_name, string house_number)
+        {
+            string sql = $"SELECT id FROM addresses WHERE street_name = '{street_name.ToLower()}' AND house_number = {house_number};";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            return command.ExecuteScalar().ToString();
+        }
 
         private string СonvertFirstCharacterToUpperCase(string word)
             => word.Substring(0, 1).ToUpper() + word.Substring(1, word.Length - 1);

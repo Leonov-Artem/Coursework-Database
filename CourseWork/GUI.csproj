@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action.cs" />
     <Compile Include="Forms\ChangeInformation.cs">
       <SubType>Form</SubType>
     </Compile>

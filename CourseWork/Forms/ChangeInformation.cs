@@ -25,12 +25,83 @@ namespace CourseWork
 
         private void forward_button_Click(object sender, EventArgs e)
         {
-            var group1 = information_groupBox.Controls;
-            var group2 = action_groupBox.Controls;
+            RadioButton selected_information = SomeRadioButtonsChecked(information_groupBox.Controls);
+            RadioButton selected_action = SomeRadioButtonsChecked(action_groupBox.Controls);
 
-            if (SomeRadioButtonsChecked(group1) && SomeRadioButtonsChecked(group2))
+            Get get = new Get(connection);
+            if (selected_action != null && selected_information != null)
             {
+                if (selected_information.Text == "Кинотеатры")
+                { 
+                    if (selected_action.Text == "Ввести данные")
+                    {
 
+                    }
+                    else if (selected_action.Text == "Изменить данные")
+                    {
+
+                    }
+                    else if (selected_action.Text == "Удалить данные")
+                    {
+                        ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
+
+                        if (comboBox != null)
+                        {
+                            string cinema = comboBox.SelectedItem.ToString();
+                            string[] split = cinema.Split(new char[] {' ', '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
+                            string id = get.AddressId(split[2], split[3]);
+                        }
+                        else
+                            MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
+                    }
+                }
+                else if (selected_information.Text == "Фильмы")
+                {
+                    if (selected_action.Text == "Ввести данные")
+                    {
+
+                    }
+                    else if (selected_action.Text == "Изменить данные")
+                    {
+
+                    }
+                    else if (selected_action.Text == "Удалить данные")
+                    {
+
+                    }
+                }
+                else if (selected_information.Text == "Сеансы")
+                {
+                    if (selected_action.Text == "Ввести данные")
+                    {
+
+                    }
+                    else if (selected_action.Text == "Изменить данные")
+                    {
+
+                    }
+                    else if (selected_action.Text == "Удалить данные")
+                    {
+
+                    }
+                }
+                else if (selected_information.Text == "Залы")
+                {
+                    if (selected_action.Text == "Ввести данные")
+                    {
+
+                    }
+                    else if (selected_action.Text == "Изменить данные")
+                    {
+
+                    }
+                    else if (selected_action.Text == "Удалить данные")
+                    {
+
+                    }
+                }
+                else
+                    MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
             }
             else
                 MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
@@ -97,27 +168,27 @@ namespace CourseWork
             return comboBox;
         }
 
-        private bool SomeRadioButtonsChecked(Control.ControlCollection controls)
+        private RadioButton SomeRadioButtonsChecked(Control.ControlCollection controls)
         {
             foreach(var control in controls)
             {
                 RadioButton radioButton = control as RadioButton;
 
                 if (radioButton.Checked)
-                    return true;
+                    return radioButton;
             }
-            return false;
+            return null;
         }
-        private bool SomeElementsComboBoxSelected(Control.ControlCollection controls)
+        private ComboBox SomeElementsComboBoxSelected(Control.ControlCollection controls)
         {
             foreach(var control in controls)
             {
                 ComboBox combo = control as ComboBox;
 
                 if (combo != null && combo.SelectedItem != null)
-                    return true;
+                    return combo;
             }
-            return false;
+            return null;
         }
     }
 }
