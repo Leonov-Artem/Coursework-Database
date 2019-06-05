@@ -15,7 +15,7 @@ namespace CourseWork
 
         public string[] Cinemas()
         {
-            string sql = $"SELECT name FROM movie_theaters";
+            string sql = $"SELECT name FROM movie_theaters;";
             MySqlCommand command = new MySqlCommand(sql, connection);
             MySqlDataReader reader = command.ExecuteReader();
 
@@ -51,6 +51,22 @@ namespace CourseWork
             string sql = $"SELECT id FROM addresses WHERE street_name = '{street_name.ToLower()}' AND house_number = {house_number};";
             MySqlCommand command = new MySqlCommand(sql, connection);
             return command.ExecuteScalar().ToString();
+        }
+        public string[] InfoAboutFilms()
+        {
+            string sql = "SELECT film_name, producer, year_of_issue FROM films;";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            List<string> list = new List<string>();
+            while (reader.Read())
+            {
+                string info = СonvertFirstCharacterToUpperCase(reader[0].ToString()) + $" ({reader[1]}, {reader[2]})";
+                list.Add(info);
+            }
+            reader.Close();
+
+            return list.ToArray();
         }
 
         private string СonvertFirstCharacterToUpperCase(string word)

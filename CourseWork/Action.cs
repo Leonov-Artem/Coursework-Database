@@ -15,7 +15,7 @@ namespace CourseWork
 
         public bool DeleteCinema(string cinema_name, string address_id)
         {
-            string sql = $"select delete_cinema('{cinema_name}', {address_id});";
+            string sql = $"select delete_cinema('{cinema_name.ToLower()}', {address_id});";
             MySqlCommand command = new MySqlCommand(sql, connection);
             return (bool)command.ExecuteScalar();
         }

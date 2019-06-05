@@ -29,6 +29,8 @@ namespace CourseWork
             RadioButton selected_action = SomeRadioButtonsChecked(action_groupBox.Controls);
 
             Get get = new Get(connection);
+            Action action = new Action(connection);
+
             if (selected_action != null && selected_information != null)
             {
                 if (selected_information.Text == "Кинотеатры")
@@ -39,7 +41,7 @@ namespace CourseWork
                     }
                     else if (selected_action.Text == "Изменить данные")
                     {
-
+                        string[] info = get.InfoAboutFilms();
                     }
                     else if (selected_action.Text == "Удалить данные")
                     {
@@ -49,7 +51,20 @@ namespace CourseWork
                         {
                             string cinema = comboBox.SelectedItem.ToString();
                             string[] split = cinema.Split(new char[] {' ', '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
-                            string id = get.AddressId(split[2], split[3]);
+
+                            string cinema_name = split[0];
+                            string street_name = split[2];
+                            string house_number = split[3];
+
+                            string id = get.AddressId(street_name, house_number);
+
+                            if (action.DeleteCinema(cinema_name, id))
+                            {
+                                MessageBox.Show($"Кинотеатр '{cinema_name}' был успешно удален!", "Оповещение");
+                                comboBox.Items.Remove(cinema);
+                            }
+                            else
+                                MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
                         }
                         else
                             MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
