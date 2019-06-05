@@ -21,7 +21,10 @@ namespace CourseWork
 
             List<string> list = new List<string>();
             while (reader.Read())
-                list.Add(reader[0].ToString());
+            {
+                string name = СonvertFirstCharacterToUpperCase(reader[0].ToString());
+                list.Add(name);
+            }
             reader.Close();
 
             return list.ToArray();
@@ -34,9 +37,17 @@ namespace CourseWork
 
             string result = "";
             while (reader.Read())
-                result += $"ул. {reader[0]} {reader[1]}";
+            {
+                string street_name = СonvertFirstCharacterToUpperCase(reader[0].ToString());
+                string house_number = reader[1].ToString();
+                result += $"ул. {street_name} {house_number}";
+            }
+            reader.Close();
 
             return result;
         }
+
+        private string СonvertFirstCharacterToUpperCase(string word)
+            => word.Substring(0, 1).ToUpper() + word.Substring(1, word.Length - 1);
     }
 }

@@ -31,13 +31,12 @@ namespace CourseWork
         {
             RadioButton radioButton = (RadioButton)sender;
 
-            Get get = new Get(connection);
             if (radioButton.Checked)
             {
                 switch(radioButton.Text)
                 {
                     case "Кинотеатры":
-                        string s = get.Address("победа");
+                        string[] s = GetCinemasWithAddresses();
                         break;
                     case "Фильмы":
                         break;
@@ -55,6 +54,16 @@ namespace CourseWork
         }
 
         //////////////////////////////////////////////////////////
+        private string[] GetCinemasWithAddresses()
+        {
+            Get get = new Get(connection);
+            string[] cinemas = get.Cinemas();
+            List<string> list = new List<string>();
 
+            foreach (var cinema in cinemas)
+                list.Add(cinema + " (" + get.Address(cinema.ToLower()) + ")");
+
+            return list.ToArray();
+        }
     }
 }
