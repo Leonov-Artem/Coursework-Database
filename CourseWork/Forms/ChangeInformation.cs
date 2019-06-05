@@ -25,6 +25,9 @@ namespace CourseWork
 
         private void forward_button_Click(object sender, EventArgs e)
         {
+            var g1 = action_groupBox.Controls;
+            var g2 = information_groupBox.Controls;
+            
         }
 
         private void InformationSwitch(object sender, EventArgs e)
@@ -47,10 +50,6 @@ namespace CourseWork
                         break;
                 }
             }
-        }
-        private void ActionSwitch(object sender, EventArgs e)
-        {
-
         }
 
         //////////////////////////////////////////////////////////
@@ -91,5 +90,18 @@ namespace CourseWork
 
             return comboBox;
         }
+
+        private bool SomeChecked(Control.ControlCollection controls)
+        {
+            foreach(var control in controls)
+            {
+                RadioButton radioButton = control as RadioButton;
+
+                if (radioButton.Checked)
+                    return true;
+            }
+            return false;
+        }
+
     }
 }
