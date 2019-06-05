@@ -25,9 +25,15 @@ namespace CourseWork
 
         private void forward_button_Click(object sender, EventArgs e)
         {
-            var g1 = action_groupBox.Controls;
-            var g2 = information_groupBox.Controls;
-            
+            var group1 = information_groupBox.Controls;
+            var group2 = action_groupBox.Controls;
+
+            if (SomeRadioButtonsChecked(group1) && SomeRadioButtonsChecked(group2))
+            {
+
+            }
+            else
+                MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
         }
 
         private void InformationSwitch(object sender, EventArgs e)
@@ -91,7 +97,7 @@ namespace CourseWork
             return comboBox;
         }
 
-        private bool SomeChecked(Control.ControlCollection controls)
+        private bool SomeRadioButtonsChecked(Control.ControlCollection controls)
         {
             foreach(var control in controls)
             {
@@ -102,6 +108,16 @@ namespace CourseWork
             }
             return false;
         }
+        private bool SomeElementsComboBoxSelected(Control.ControlCollection controls)
+        {
+            foreach(var control in controls)
+            {
+                ComboBox combo = control as ComboBox;
 
+                if (combo != null && combo.SelectedItem != null)
+                    return true;
+            }
+            return false;
+        }
     }
 }
