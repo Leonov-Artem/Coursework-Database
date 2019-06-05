@@ -39,8 +39,6 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.backwards_button = new System.Windows.Forms.Button();
             this.forward_button = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -68,6 +66,7 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Залы";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.InformationSwitch);
             // 
             // radioButton3
             // 
@@ -79,6 +78,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Сеансы";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.InformationSwitch);
             // 
             // radioButton2
             // 
@@ -90,6 +90,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Фильмы";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.InformationSwitch);
             // 
             // radioButton1
             // 
@@ -101,6 +102,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Кинотеатры";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.InformationSwitch);
             // 
             // groupBox2
             // 
@@ -124,6 +126,7 @@
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "Удалить данные";
             this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.ActionSwitch);
             // 
             // radioButton6
             // 
@@ -135,6 +138,7 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Изменить данные";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.ActionSwitch);
             // 
             // radioButton5
             // 
@@ -146,6 +150,7 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Ввести данные";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.ActionSwitch);
             // 
             // backwards_button
             // 
@@ -167,30 +172,11 @@
             this.forward_button.UseVisualStyleBackColor = true;
             this.forward_button.Click += new System.EventHandler(this.forward_button_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(81, 221);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 17);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Фильм: ";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(149, 221);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 24);
-            this.comboBox1.TabIndex = 5;
-            // 
             // ChangeInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 385);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(562, 366);
             this.Controls.Add(this.forward_button);
             this.Controls.Add(this.backwards_button);
             this.Controls.Add(this.groupBox2);
@@ -204,7 +190,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -221,7 +206,5 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Button backwards_button;
         private System.Windows.Forms.Button forward_button;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

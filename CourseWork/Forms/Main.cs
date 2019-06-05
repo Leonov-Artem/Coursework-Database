@@ -38,7 +38,7 @@ namespace CourseWork
         }
         private void InputChangeData_button_Click(object sender, EventArgs e)
         {
-            ChangeInformation changeInformation = new ChangeInformation();
+            ChangeInformation changeInformation = new ChangeInformation(connection);
             changeInformation.ShowDialog();
         }
         private void exit_button_Click(object sender, EventArgs e) => Application.Exit();

@@ -73,6 +73,7 @@
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Get.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Privilege.cs" />
     <Compile Include="Program.cs" />
@@ -119,6 +120,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Change\" />
+    <Folder Include="Forms\Delete\" />
+    <Folder Include="Forms\Input\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
