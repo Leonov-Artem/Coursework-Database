@@ -38,7 +38,8 @@ namespace CourseWork
                 { 
                     if (selected_action.Text == "Ввести данные")
                     {
-
+                        AddNewCinema addNewCinema = new AddNewCinema(connection);
+                        addNewCinema.ShowDialog();
                     }
                     else if (selected_action.Text == "Изменить данные")
                     {

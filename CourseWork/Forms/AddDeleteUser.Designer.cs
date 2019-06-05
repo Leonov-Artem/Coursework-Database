@@ -74,6 +74,10 @@
             // 
             this.position_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.position_comboBox.FormattingEnabled = true;
+            this.position_comboBox.Items.AddRange(new object[] {
+            "Администратор",
+            "Кассир",
+            "Бухгалтер"});
             this.position_comboBox.Location = new System.Drawing.Point(118, 112);
             this.position_comboBox.Name = "position_comboBox";
             this.position_comboBox.Size = new System.Drawing.Size(159, 24);

@@ -153,7 +153,7 @@
             // 
             this.backwards_button.Location = new System.Drawing.Point(12, 323);
             this.backwards_button.Name = "backwards_button";
-            this.backwards_button.Size = new System.Drawing.Size(87, 36);
+            this.backwards_button.Size = new System.Drawing.Size(95, 32);
             this.backwards_button.TabIndex = 2;
             this.backwards_button.Text = "Назад";
             this.backwards_button.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@
             // 
             this.forward_button.Location = new System.Drawing.Point(133, 323);
             this.forward_button.Name = "forward_button";
-            this.forward_button.Size = new System.Drawing.Size(87, 36);
+            this.forward_button.Size = new System.Drawing.Size(95, 32);
             this.forward_button.TabIndex = 3;
             this.forward_button.Text = "Далее";
             this.forward_button.UseVisualStyleBackColor = true;

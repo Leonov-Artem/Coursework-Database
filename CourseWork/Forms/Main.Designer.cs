@@ -41,7 +41,7 @@
             this.InputChangeData_button.Name = "InputChangeData_button";
             this.InputChangeData_button.Size = new System.Drawing.Size(293, 35);
             this.InputChangeData_button.TabIndex = 0;
-            this.InputChangeData_button.Text = "Ввод/удаление/иземение данных";
+            this.InputChangeData_button.Text = "Ввод/удаление/измение данных";
             this.InputChangeData_button.UseVisualStyleBackColor = true;
             this.InputChangeData_button.Click += new System.EventHandler(this.InputChangeData_button_Click);
             // 
