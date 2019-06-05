@@ -86,8 +86,6 @@ namespace CourseWork
                     InputChangeData_button.Enabled = false;
                     break;
             }
-            if (currentUser.Position != Position.Administrator)
-                addDelete_button.Enabled = false;
         }
     }
 }

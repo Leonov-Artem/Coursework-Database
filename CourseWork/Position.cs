@@ -10,6 +10,7 @@ namespace CourseWork
     {
         Administrator,
         Cashier,
-        Accountant
+        Accountant,
+        NotSelected
     }
 }

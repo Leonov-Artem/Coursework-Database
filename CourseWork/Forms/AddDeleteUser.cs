@@ -65,6 +65,7 @@ namespace CourseWork
             else
                 MessageBox.Show("Выберите строку из списка!", "Ошибка!");
         }
+        private void backwards_button_Click(object sender, EventArgs e) => Close();
 
         ///////////////////////////////////////////////////////////////////////////
         private void ClearFields()
@@ -76,7 +77,7 @@ namespace CourseWork
         private string GetPasswordFromTextBox() => password_textBox.Text;
         private Position GetSelectedPosition(string position)
         {
-            Position selectedPosition = Position.Administrator;
+            Position selectedPosition = Position.NotSelected;
 
             switch (position)
             {
@@ -120,7 +121,5 @@ namespace CourseWork
             if (listBox1.Items.Count != 0)
                 listBox1.Items.Clear();
         }
-
-        private void backwards_button_Click(object sender, EventArgs e) => Close();
     }
 }

@@ -51,7 +51,7 @@
             this.groupBox1.Controls.Add(this.radioButton3);
             this.groupBox1.Controls.Add(this.radioButton2);
             this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(70, 41);
+            this.groupBox1.Location = new System.Drawing.Point(84, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(190, 151);
             this.groupBox1.TabIndex = 0;
@@ -107,7 +107,7 @@
             this.groupBox2.Controls.Add(this.radioButton7);
             this.groupBox2.Controls.Add(this.radioButton6);
             this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Location = new System.Drawing.Point(287, 41);
+            this.groupBox2.Location = new System.Drawing.Point(301, 49);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(190, 151);
             this.groupBox2.TabIndex = 1;
@@ -170,7 +170,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 213);
+            this.label1.Location = new System.Drawing.Point(81, 221);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 17);
             this.label1.TabIndex = 4;
@@ -179,13 +179,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Сияние",
-            "Персона",
-            "Криминальное чтиво",
-            "Зеркало",
-            "Солярис"});
-            this.comboBox1.Location = new System.Drawing.Point(135, 213);
+            this.comboBox1.Location = new System.Drawing.Point(149, 221);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(155, 24);
             this.comboBox1.TabIndex = 5;
@@ -194,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(587, 385);
+            this.ClientSize = new System.Drawing.Size(562, 385);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.forward_button);

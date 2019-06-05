@@ -47,7 +47,7 @@ namespace CourseWork
             MySqlCommand command = new MySqlCommand(sql, conn);
             string pos = command.ExecuteScalar().ToString();
 
-            Position position = Position.Accountant;
+            Position position = Position.NotSelected;
             switch(pos)
             {
                 case "админ": return Position.Administrator;
