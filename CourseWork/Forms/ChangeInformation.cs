@@ -36,7 +36,8 @@ namespace CourseWork
                 switch(radioButton.Text)
                 {
                     case "Кинотеатры":
-                        string[] s = GetCinemasWithAddresses();
+                        string[] cinemas = GetCinemasWithAddresses();
+                        AddCinemasToComboBox(cinemas);
                         break;
                     case "Фильмы":
                         break;
@@ -47,7 +48,6 @@ namespace CourseWork
                 }
             }
         }
-
         private void ActionSwitch(object sender, EventArgs e)
         {
 
@@ -64,6 +64,32 @@ namespace CourseWork
                 list.Add(cinema + " (" + get.Address(cinema.ToLower()) + ")");
 
             return list.ToArray();
+        }
+        private void AddCinemasToComboBox(string[] cinemas)
+        {
+            Label label = CreateAndAddCinemaLabel();
+            ComboBox comboBox = CreateAndAddCinemaComboBox(label);
+
+            foreach (var cinema in cinemas)
+                comboBox.Items.Add(cinema);
+        }
+        private Label CreateAndAddCinemaLabel()
+        {
+            Label label = new Label();
+            label.Text = "Кинотеатры: ";
+            label.Location = new Point(information_groupBox.Location.X, information_groupBox.Location.Y + information_groupBox.Size.Height + 10);
+            Controls.Add(label);
+
+            return label;
+        }
+        private ComboBox CreateAndAddCinemaComboBox(Label label)
+        {
+            ComboBox comboBox = new ComboBox();
+            comboBox.Location = new Point(label.Location.X + label.Width, label.Location.Y);
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            Controls.Add(comboBox);
+
+            return comboBox;
         }
     }
 }

@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.information_groupBox = new System.Windows.Forms.GroupBox();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.action_groupBox = new System.Windows.Forms.GroupBox();
             this.radioButton7 = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.backwards_button = new System.Windows.Forms.Button();
             this.forward_button = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.information_groupBox.SuspendLayout();
+            this.action_groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // information_groupBox
             // 
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Location = new System.Drawing.Point(84, 49);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(190, 151);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Информация";
+            this.information_groupBox.Controls.Add(this.radioButton4);
+            this.information_groupBox.Controls.Add(this.radioButton3);
+            this.information_groupBox.Controls.Add(this.radioButton2);
+            this.information_groupBox.Controls.Add(this.radioButton1);
+            this.information_groupBox.Location = new System.Drawing.Point(84, 49);
+            this.information_groupBox.Name = "information_groupBox";
+            this.information_groupBox.Size = new System.Drawing.Size(190, 151);
+            this.information_groupBox.TabIndex = 0;
+            this.information_groupBox.TabStop = false;
+            this.information_groupBox.Text = "Информация";
             // 
             // radioButton4
             // 
@@ -104,17 +104,17 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.InformationSwitch);
             // 
-            // groupBox2
+            // action_groupBox
             // 
-            this.groupBox2.Controls.Add(this.radioButton7);
-            this.groupBox2.Controls.Add(this.radioButton6);
-            this.groupBox2.Controls.Add(this.radioButton5);
-            this.groupBox2.Location = new System.Drawing.Point(301, 49);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(190, 151);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Действие";
+            this.action_groupBox.Controls.Add(this.radioButton7);
+            this.action_groupBox.Controls.Add(this.radioButton6);
+            this.action_groupBox.Controls.Add(this.radioButton5);
+            this.action_groupBox.Location = new System.Drawing.Point(301, 49);
+            this.action_groupBox.Name = "action_groupBox";
+            this.action_groupBox.Size = new System.Drawing.Size(196, 151);
+            this.action_groupBox.TabIndex = 1;
+            this.action_groupBox.TabStop = false;
+            this.action_groupBox.Text = "Действие";
             // 
             // radioButton7
             // 
@@ -179,28 +179,28 @@
             this.ClientSize = new System.Drawing.Size(562, 366);
             this.Controls.Add(this.forward_button);
             this.Controls.Add(this.backwards_button);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.action_groupBox);
+            this.Controls.Add(this.information_groupBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ChangeInformation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изменение информации";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.information_groupBox.ResumeLayout(false);
+            this.information_groupBox.PerformLayout();
+            this.action_groupBox.ResumeLayout(false);
+            this.action_groupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox information_groupBox;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox action_groupBox;
         private System.Windows.Forms.RadioButton radioButton7;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
