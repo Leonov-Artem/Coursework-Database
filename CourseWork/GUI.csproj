@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action.cs" />
+    <Compile Include="Forms\Input\AddNewFilm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Input\AddNewFilm.Designer.cs">
+      <DependentUpon>AddNewFilm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Change\ChangeCinemaDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ChangeInformation.resx">
       <DependentUpon>ChangeInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Input\AddNewFilm.resx">
+      <DependentUpon>AddNewFilm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
