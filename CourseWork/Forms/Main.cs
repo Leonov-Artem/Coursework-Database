@@ -72,7 +72,10 @@ namespace CourseWork
         }
         private void HideButtonsAccordingToPrivileges(CurrentUser currentUser)
         {
-            switch(currentUser.Position)
+            addDelete_button.Enabled = true;
+            InputChangeData_button.Enabled = true;
+
+            switch (currentUser.Position)
             {
                 case Position.Administrator:
                     addDelete_button.Enabled = true;

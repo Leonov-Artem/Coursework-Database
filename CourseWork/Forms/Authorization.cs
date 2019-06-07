@@ -14,6 +14,7 @@ namespace CourseWork
     public partial class Authorization : Form
     {
         MySqlConnection connection;
+        Privilege Privilege;
         string Login { get; set; }
         string Password { get; set; }
 
@@ -21,6 +22,7 @@ namespace CourseWork
         {
             InitializeComponent();
             this.connection = connection;
+            Privilege = new Privilege(connection);
         }
 
         private void login_button_Click(object sender, EventArgs e)
@@ -30,7 +32,7 @@ namespace CourseWork
 
             if (Login != "" || Password != "")
             {
-                if (Privilege.UserExist(connection, Login, Password))
+                if (Privilege.UserExist(Login, Password))
                     this.Hide();
                 else
                 {
@@ -53,7 +55,7 @@ namespace CourseWork
         private string GetPasswordFromTextBox() => password_textBox.Text;
         public CurrentUser GetCurrentUser()
         {
-            Position position = Privilege.GetUserPosition(connection, Login, Password);
+            Position position = Privilege.GetUserPosition(Login, Password);
             return new CurrentUser(Login, Password, position);
         }
     }

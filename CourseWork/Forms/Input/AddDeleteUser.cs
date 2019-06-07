@@ -14,11 +14,13 @@ namespace CourseWork
     public partial class AddDeleteUser : Form
     {
         MySqlConnection connection;
+        Privilege Privilege;
 
         public AddDeleteUser(MySqlConnection connection)
         {
             InitializeComponent();
             this.connection = connection;
+            Privilege = new Privilege(connection);
 
             AddItemsToListBox();
         }
@@ -32,7 +34,7 @@ namespace CourseWork
             if (login != "" && password != "" && item != null)
             {
                 Position position = GetSelectedPosition(item.ToString());
-                bool successfully = Privilege.AddUser(connection, login, password, position);
+                bool successfully = Privilege.AddUser(login, password, position);
 
                 if (successfully)
                 {
@@ -60,7 +62,7 @@ namespace CourseWork
                 listBox1.Items.Remove(item);
 
                 string[] loginPassword = item.Split(new string[] { " ", "(", ")" }, StringSplitOptions.RemoveEmptyEntries);
-                Privilege.DeleteUser(connection, loginPassword[0], loginPassword[1]);
+                Privilege.DeleteUser(loginPassword[0], loginPassword[1]);
             }
             else
                 MessageBox.Show("Выберите строку из списка!", "Ошибка!");

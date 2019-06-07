@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace CourseWork
 {
-    static class Privilege
+    class Privilege
     {
-        public static bool AddUser(MySqlConnection conn, string login, string password, Position position)
+        MySqlConnection connection;
+
+        public Privilege(MySqlConnection connection) => this.connection = connection;
+
+        public bool AddUser(string login, string password, Position position)
         {
             string sql = $"SELECT add_new_user('{login}', '{password}', ";
 
@@ -26,25 +25,25 @@ namespace CourseWork
                     break;
             }
 
-            MySqlCommand command = new MySqlCommand(sql, conn);     // объект для выполнения SQL-запроса
+            MySqlCommand command = new MySqlCommand(sql, connection);     // объект для выполнения SQL-запроса
             return (bool)command.ExecuteScalar();
         }
-        public static bool DeleteUser(MySqlConnection conn, string login, string password)
+        public bool DeleteUser(string login, string password)
         {
             string sql = $"SELECT delete_user('{login}', '{password}');";
-            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlCommand command = new MySqlCommand(sql, connection);
             return (bool)command.ExecuteScalar();
         }
-        public static bool UserExist(MySqlConnection conn, string login, string password)
+        public bool UserExist(string login, string password)
         {
             string sql = $"SELECT check_user_existence('{login}', '{password}');";
-            MySqlCommand command = new MySqlCommand(sql, conn); 
+            MySqlCommand command = new MySqlCommand(sql, connection); 
             return (bool)command.ExecuteScalar();
         }
-        public static Position GetUserPosition(MySqlConnection conn, string login, string password)
+        public Position GetUserPosition(string login, string password)
         {
             string sql = $"SELECT get_user_position('{login}', '{password}');";
-            MySqlCommand command = new MySqlCommand(sql, conn);
+            MySqlCommand command = new MySqlCommand(sql, connection);
             string pos = command.ExecuteScalar().ToString();
 
             Position position = Position.NotSelected;
