@@ -87,7 +87,7 @@
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
     <Compile Include="get\Get.cs" />
-    <Compile Include="get\InfoAboutFilm.cs" />
+    <Compile Include="get\InfoAboutFilms.cs" />
     <Compile Include="get\InfoAboutCinemas.cs" />
     <Compile Include="get\InfoAboutAddresses.cs" />
     <Compile Include="Position.cs" />
