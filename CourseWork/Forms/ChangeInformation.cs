@@ -15,11 +15,16 @@ namespace CourseWork
     {
         MySqlConnection connection;
         List<Control> controls = new List<Control>();
+        Get get;
+        Action action;
 
         public ChangeInformation(MySqlConnection connection)
         {
             InitializeComponent();
             this.connection = connection;
+
+            get = new Get(connection);
+            action = new Action(connection);
         }
 
         private void backwards_button_Click(object sender, EventArgs e) => Close();
@@ -28,50 +33,19 @@ namespace CourseWork
         {
             RadioButton selected_information = SomeRadioButtonsChecked(information_groupBox.Controls);
             RadioButton selected_action = SomeRadioButtonsChecked(action_groupBox.Controls);
-            
-            Get get = new Get(connection);
-            Action action = new Action(connection);
 
             if (selected_action != null && selected_information != null)
             {
                 if (selected_information.Text == "Кинотеатры")
-                { 
+                {
                     if (selected_action.Text == "Ввести данные")
-                    {
-                        AddNewCinema addNewCinema = new AddNewCinema(connection);
-                        addNewCinema.ShowDialog();
-                    }
+                        ShowAddNewCinemaForm();
+
                     else if (selected_action.Text == "Изменить данные")
-                    {
-                        ChangeCinemaDetails change = new ChangeCinemaDetails(connection);
-                        change.ShowDialog();
-                    }
+                        ShowChangeCinemaDetailsForm();
+
                     else if (selected_action.Text == "Удалить данные")
-                    {
-                        ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
-
-                        if (comboBox != null)
-                        {
-                            string cinema = comboBox.SelectedItem.ToString();
-                            string[] split = cinema.Split(new char[] {' ', '(', ')' }, StringSplitOptions.RemoveEmptyEntries);
-
-                            string cinema_name = split[0];
-                            string street_name = split[2];
-                            string house_number = split[3];
-
-                            string id = get.AddressId(street_name, house_number);
-
-                            if (action.DeleteCinema(cinema_name, id))
-                            {
-                                MessageBox.Show($"Кинотеатр '{cinema_name}' был успешно удален!", "Оповещение");
-                                comboBox.Items.Remove(cinema);
-                            }
-                            else
-                                MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
-                        }
-                        else
-                            MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
-                    }
+                        DeleteCinema();
                 }
                 else if (selected_information.Text == "Фильмы")
                 {
@@ -170,8 +144,6 @@ namespace CourseWork
             }
         }
 
-        /////////////////////////////////////////////////////////////////////////////
-
         ////////////////////ДЛЯ КИНОТЕАТРОВ//////////////////////////////////////////
         private string[] GetCinemasWithAddresses()
         {
@@ -269,6 +241,41 @@ namespace CourseWork
             film_name =  film_name.Remove(film_name.Length - 1, 1);
         }
 
+        ////////////////////ДЕЙСТВИЯ////////////////////////////////////////////////
+        private void DeleteCinema()
+        {
+            ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
+
+            if (comboBox != null)
+            {
+                string cinema = comboBox.SelectedItem.ToString();
+                Get.NameAndCinemaAddress(cinema, out string cinema_name, out string street_name, out string house_number);
+
+                string id = get.AddressId(street_name, house_number);
+
+                if (action.DeleteCinema(cinema_name, id))
+                {
+                    MessageBox.Show($"Кинотеатр '{cinema_name}' был успешно удален!", "Оповещение");
+                    comboBox.Items.Remove(cinema);
+                }
+                else
+                    MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
+            }
+            else
+                MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
+        }
+        private void ShowAddNewCinemaForm()
+        {
+            AddNewCinema addNewCinema = new AddNewCinema(connection);
+            addNewCinema.ShowDialog();
+        }
+        private void ShowChangeCinemaDetailsForm()
+        {
+            ChangeCinemaDetails change = new ChangeCinemaDetails(connection);
+            change.ShowDialog();
+        }
+
+        ///////////////////////ДОПОЛНИТЕЛЬНЫЕ МЕТОДЫ////////////////////////////////
         private void DeleteAllNewControls()
         {
             if (controls.Count != 0)
