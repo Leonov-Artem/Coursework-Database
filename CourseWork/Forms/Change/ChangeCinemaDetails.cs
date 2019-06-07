@@ -34,12 +34,11 @@ namespace CourseWork
         }
 
         private void cinema_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Get get = new Get(connection);
-
+        { 
             string selected = cinema_comboBox.SelectedItem.ToString();
-            GetNameAndAddress(selected, out string name, out string street, out string house);
+            Get.NameAndCinemaAddress(selected, out string name, out string street, out string house);
 
+            Get get = new Get(connection);
             string id = get.AddressId(street, house);
             string category = get.CinemaCategory(name, id);
 
@@ -67,19 +66,6 @@ namespace CourseWork
             foreach (var cinema in cinemas)
                 cinema_comboBox.Items.Add(cinema);
         }
-        private void GetNameAndAddress(string cinema, out string name, out string street, out string house)
-        {
-            var match = Regex.Match(cinema, @"^(.+)\s+\(");
-            name = match.Groups[1].Value;
-            name = SplitAndJoin(name);
-
-            match = Regex.Match(cinema, @"\(.+\.\s+(.+)\,");
-            street = match.Groups[1].Value;
-            street = SplitAndJoin(street);
-
-            match = Regex.Match(cinema, @",\s+(\w+.+\b)");
-            house = match.Groups[1].Value;
-        }
 
         private void SetFields(string name, string category, string street, string house)
         {
@@ -87,17 +73,6 @@ namespace CourseWork
             catefory_textBox.Text = category;
             street_textBox.Text = street;
             house_textBox.Text = house;
-        }
-
-        private string SplitAndJoin(string name)
-        {
-            string[] split = name.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-            string result = "";
-            foreach (var s in split)
-                result += s + " ";
-
-            return result.Remove(result.Length - 1, 1);
         }
     }
 }
