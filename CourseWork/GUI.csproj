@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action.cs" />
+    <Compile Include="Forms\Change\ChangeCinemaDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Change\ChangeCinemaDetails.Designer.cs">
+      <DependentUpon>ChangeCinemaDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Input\AddNewCinema.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,10 +66,10 @@
     <Compile Include="Forms\ChangeInformation.Designer.cs">
       <DependentUpon>ChangeInformation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddDeleteUser.cs">
+    <Compile Include="Forms\Input\AddDeleteUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddDeleteUser.Designer.cs">
+    <Compile Include="Forms\Input\AddDeleteUser.Designer.cs">
       <DependentUpon>AddDeleteUser.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentUser.cs" />
@@ -91,10 +97,13 @@
     <Compile Include="Forms\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Change\ChangeCinemaDetails.resx">
+      <DependentUpon>ChangeCinemaDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Input\AddNewCinema.resx">
       <DependentUpon>AddNewCinema.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddDeleteUser.resx">
+    <EmbeddedResource Include="Forms\Input\AddDeleteUser.resx">
       <DependentUpon>AddDeleteUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Authorization.resx">
@@ -132,7 +141,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Change\" />
     <Folder Include="Forms\Delete\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

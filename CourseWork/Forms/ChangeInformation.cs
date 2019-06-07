@@ -43,7 +43,8 @@ namespace CourseWork
                     }
                     else if (selected_action.Text == "Изменить данные")
                     {
-                        
+                        ChangeCinemaDetails change = new ChangeCinemaDetails(connection);
+                        change.ShowDialog();
                     }
                     else if (selected_action.Text == "Удалить данные")
                     {
