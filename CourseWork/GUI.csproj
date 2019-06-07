@@ -47,7 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Action.cs" />
+    <Compile Include="Action\ActionWithAddresses.cs" />
+    <Compile Include="Action\ActionWithCinemas.cs" />
+    <Compile Include="Action\ActionWithFilms.cs" />
+    <Compile Include="Action\Action.cs" />
     <Compile Include="Forms\Change\ChangeMovieInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,10 +101,10 @@
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="get\Get.cs" />
-    <Compile Include="get\InfoAboutFilms.cs" />
-    <Compile Include="get\InfoAboutCinemas.cs" />
-    <Compile Include="get\InfoAboutAddresses.cs" />
+    <Compile Include="Get\Get.cs" />
+    <Compile Include="Get\InfoAboutFilms.cs" />
+    <Compile Include="Get\InfoAboutCinemas.cs" />
+    <Compile Include="Get\InfoAboutAddresses.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Privilege.cs" />
     <Compile Include="Program.cs" />
