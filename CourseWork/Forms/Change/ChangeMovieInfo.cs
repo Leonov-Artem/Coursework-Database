@@ -57,8 +57,11 @@ namespace CourseWork
                 new_description != "" &&
                 new_actors != "")
             {
-                action.AddNewFilm(new_name, new_producer, new_country, new_year, new_genre, new_duration, new_description, new_actors);
+                string film_id = get.FilmId(old_name, old_producer, old_year);
+                action.UpdateFilm(film_id, new_name, new_producer, new_country, new_year, new_genre, new_duration, new_description, new_actors);
+
                 MessageBox.Show("Запись была успешно изменена!", "Оповещение");
+                ClearAllFields();
             }
             else
                 MessageBox.Show("Введите данные!", "Ошибка!");
@@ -80,13 +83,12 @@ namespace CourseWork
                                                     out string actors);
 
             SetFields(name, producer, country, year, genre, duration, description, actors);
-
-            //SetFields(name, category, street, house);
         }
 
         //////////////////////////////////////////////////////////////////////////////
         private void UpdateMovieInfo()
         {
+            ClearComboBox();
             string[] films = GetInfoAboutFilms();
             AddFilmsToComboBox(films);
         }
@@ -101,6 +103,11 @@ namespace CourseWork
 
             foreach (var film in films)
                 films_comboBox.Items.Add(film);
+        }
+        private void ClearComboBox()
+        {
+            if (films_comboBox.Items.Count != 0)
+                films_comboBox.Items.Clear();
         }
 
         private void SetFields(string name,
@@ -120,6 +127,20 @@ namespace CourseWork
             actors_richTextBox.Text         = old_actors = actors;
             duration_maskedTextBox.Text     = old_duration = duration;
             genre_textBox.Text              = old_genre = genre;
+        }
+
+        private void ClearAllFields()
+        {
+            film_name_textBox.Text = old_name               = "";
+            producer_textBox.Text = old_producer            = "";
+            country_textBox.Text = old_country              = "";
+            year_maskedTextBox.Text = old_year              = "";
+            description_richTextBox.Text = old_description  = "";
+            actors_richTextBox.Text = old_actors            = "";
+            duration_maskedTextBox.Text = old_duration      = "";
+            genre_textBox.Text = old_genre = "";
+
+            UpdateMovieInfo();
         }
 
         private string GetNameFromTextBox()         => film_name_textBox        .Text;

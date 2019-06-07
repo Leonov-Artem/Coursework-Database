@@ -44,6 +44,28 @@ namespace CourseWork
             MySqlCommand command = new MySqlCommand(sql, connection);
             command.ExecuteNonQuery();
         }
+        public void UpdateFilm(string film_id, 
+                               string name, 
+                               string new_prod, 
+                               string new_country, 
+                               string new_year, 
+                               string new_genre, 
+                               string new_duration, 
+                               string new_description, 
+                               string new_actors)
+        {
+            string sql = $"call update_film({film_id}," +
+                $"'{name}'," +
+                $"'{new_prod}'," +
+                $"'{new_country}'," +
+                $"'{new_year}'," +
+                $"'{new_genre}'," +
+                $"'{new_duration}'," +
+                $"'{new_description}'," +
+                $"'{new_actors}');";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            command.ExecuteNonQuery();
+        }
         public void AddNewFilm(string name,
                                string producer,
                                string country,
