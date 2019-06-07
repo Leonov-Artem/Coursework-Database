@@ -56,9 +56,9 @@ namespace CourseWork
 
             string result = "";
             foreach (var n in name)
-                result += n;
+                result += n + " ";
 
-            return result;
+            return result.Remove(result.Length - 1, 1);
         }
         private string GetCategoryFromTextBox() => category_textBox.Text;
         private string GetStreetFromTextBox() => street_textBox.Text;

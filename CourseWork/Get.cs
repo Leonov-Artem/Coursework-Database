@@ -122,7 +122,7 @@ namespace CourseWork
         }
         static private string GetHouseNumber(string cinema_decription)
         {
-            var match = Regex.Match(cinema_decription, @",\s+(\w+.+\b)");
+            var match = Regex.Match(cinema_decription, @",\s+(.+)\)");
             return match.Groups[1].Value;
         }
     }
