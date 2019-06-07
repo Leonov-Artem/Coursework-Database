@@ -1,13 +1,9 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace CourseWork
 {
@@ -58,28 +54,8 @@ namespace CourseWork
 
                     }
                     else if (selected_action.Text == "Удалить данные")
-                    {
-                        ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
+                        DeleteFilm();
 
-                        if (comboBox != null)
-                        {
-                            string cinema = comboBox.SelectedItem.ToString();
-                            string[] split = cinema.Split(new char[] { ' ', '(', ')', ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                            GetFilmNameProdecerYear(split, out string film_name, out string producer, out string year);
-
-                            if (action.DeleteFIlm(film_name, producer, year))
-                            {
-                                MessageBox.Show($"Фильм '{film_name}' был успешно удален!", "Оповещение");
-                                comboBox.Items.Remove(cinema);
-                            }
-
-                            else
-                                MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
-                        }
-                        else
-                            MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
-                    }
                 }
                 else if (selected_information.Text == "Сеансы")
                 {
@@ -229,17 +205,6 @@ namespace CourseWork
 
             return comboBox;
         }
-        private void GetFilmNameProdecerYear(string[] split, out string film_name, out string producer, out string year)
-        {
-            year = split[split.Length - 1];
-            producer = split[split.Length - 3] + " " + split[split.Length - 2];
-
-            film_name = "";
-            for (int i = 0; i < split.Length - 3; i++)
-                film_name += split[i] + " ";
-
-            film_name =  film_name.Remove(film_name.Length - 1, 1);
-        }
 
         ////////////////////ДЕЙСТВИЯ////////////////////////////////////////////////
         private void DeleteCinema()
@@ -258,6 +223,26 @@ namespace CourseWork
                     MessageBox.Show($"Кинотеатр '{cinema_name}' был успешно удален!", "Оповещение");
                     comboBox.Items.Remove(cinema);
                     action.DeleteAddress(address_id);
+                }
+                else
+                    MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
+            }
+            else
+                MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
+        }
+        private void DeleteFilm()
+        {
+            ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
+
+            if (comboBox != null)
+            {
+                string film_descr = comboBox.SelectedItem.ToString();
+                Get.FilmNameProdecerYear(film_descr, out string film_name, out string producer, out string year);
+
+                if (action.DeleteFIlm(film_name, producer, year))
+                {
+                    MessageBox.Show($"Фильм '{film_name}' был успешно удален!", "Оповещение");
+                    comboBox.Items.Remove(film_descr);
                 }
                 else
                     MessageBox.Show("Проверьте выбранные данные", "Ошибка!");

@@ -86,7 +86,10 @@
     <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Get.cs" />
+    <Compile Include="get\Get.cs" />
+    <Compile Include="get\InfoAboutFilm.cs" />
+    <Compile Include="get\InfoAboutCinemas.cs" />
+    <Compile Include="get\InfoAboutAddresses.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Privilege.cs" />
     <Compile Include="Program.cs" />
