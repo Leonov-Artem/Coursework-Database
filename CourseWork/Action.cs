@@ -31,6 +31,7 @@ namespace CourseWork
             MySqlCommand command = new MySqlCommand(sql, connection);
             command.ExecuteNonQuery();
         }
+
         public bool AddNewCinema(string cinema_name, string category, string street, string house)
         {
             string sql = $"SELECT add_new_cinema('{cinema_name}', {category}, '{street}', '{house}');";
@@ -40,6 +41,27 @@ namespace CourseWork
         public void UpdateCinema(string cinema_id, string address_id, string new_name, string new_category, string new_street, string new_house)
         {
             string sql = $"CALL update_cinema({cinema_id}, {address_id}, '{new_name}', {new_category}, '{new_street}', '{new_house}');";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            command.ExecuteNonQuery();
+        }
+        public void AddNewFilm(string name,
+                               string producer,
+                               string country,
+                               string year,
+                               string genre,
+                               string duration,
+                               string description,
+                               string actors)
+        {
+            string sql = $"CALL add_new_film('{name}'," +
+                $"'{producer}'," +
+                $"'{country}'," +
+                $"'{year}'," +
+                $"'{genre}'," +
+                $"'{duration}'," +
+                $"'{description}'," +
+                $"'{actors}'" +
+                $");";
             MySqlCommand command = new MySqlCommand(sql, connection);
             command.ExecuteNonQuery();
         }

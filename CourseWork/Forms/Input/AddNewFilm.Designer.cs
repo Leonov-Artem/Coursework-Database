@@ -43,9 +43,9 @@
             this.film_name_textBox = new System.Windows.Forms.TextBox();
             this.country_textBox = new System.Windows.Forms.TextBox();
             this.producer_textBox = new System.Windows.Forms.TextBox();
-            this.year_textBox = new System.Windows.Forms.TextBox();
             this.genre_textBox = new System.Windows.Forms.TextBox();
-            this.duracion_textBox = new System.Windows.Forms.TextBox();
+            this.year_maskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.duration_maskedTextBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // Backwards_button
@@ -82,9 +82,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 17);
+            this.label2.Size = new System.Drawing.Size(79, 17);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Продюсер";
+            this.label2.Text = "Продюсер:";
             // 
             // label3
             // 
@@ -177,13 +177,6 @@
             this.producer_textBox.Size = new System.Drawing.Size(276, 22);
             this.producer_textBox.TabIndex = 14;
             // 
-            // year_textBox
-            // 
-            this.year_textBox.Location = new System.Drawing.Point(127, 121);
-            this.year_textBox.Name = "year_textBox";
-            this.year_textBox.Size = new System.Drawing.Size(276, 22);
-            this.year_textBox.TabIndex = 15;
-            // 
             // genre_textBox
             // 
             this.genre_textBox.Location = new System.Drawing.Point(127, 153);
@@ -191,21 +184,32 @@
             this.genre_textBox.Size = new System.Drawing.Size(276, 22);
             this.genre_textBox.TabIndex = 16;
             // 
-            // duracion_textBox
+            // year_maskedTextBox
             // 
-            this.duracion_textBox.Location = new System.Drawing.Point(127, 183);
-            this.duracion_textBox.Name = "duracion_textBox";
-            this.duracion_textBox.Size = new System.Drawing.Size(276, 22);
-            this.duracion_textBox.TabIndex = 17;
+            this.year_maskedTextBox.Location = new System.Drawing.Point(127, 121);
+            this.year_maskedTextBox.Mask = "0000";
+            this.year_maskedTextBox.Name = "year_maskedTextBox";
+            this.year_maskedTextBox.Size = new System.Drawing.Size(276, 22);
+            this.year_maskedTextBox.TabIndex = 18;
+            this.year_maskedTextBox.ValidatingType = typeof(int);
+            // 
+            // duration_maskedTextBox
+            // 
+            this.duration_maskedTextBox.Location = new System.Drawing.Point(127, 186);
+            this.duration_maskedTextBox.Mask = "00:00:00";
+            this.duration_maskedTextBox.Name = "duration_maskedTextBox";
+            this.duration_maskedTextBox.Size = new System.Drawing.Size(276, 22);
+            this.duration_maskedTextBox.TabIndex = 19;
+            this.duration_maskedTextBox.ValidatingType = typeof(int);
             // 
             // AddNewFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 540);
-            this.Controls.Add(this.duracion_textBox);
+            this.Controls.Add(this.duration_maskedTextBox);
+            this.Controls.Add(this.year_maskedTextBox);
             this.Controls.Add(this.genre_textBox);
-            this.Controls.Add(this.year_textBox);
             this.Controls.Add(this.producer_textBox);
             this.Controls.Add(this.country_textBox);
             this.Controls.Add(this.film_name_textBox);
@@ -247,8 +251,8 @@
         private System.Windows.Forms.TextBox film_name_textBox;
         private System.Windows.Forms.TextBox country_textBox;
         private System.Windows.Forms.TextBox producer_textBox;
-        private System.Windows.Forms.TextBox year_textBox;
         private System.Windows.Forms.TextBox genre_textBox;
-        private System.Windows.Forms.TextBox duracion_textBox;
+        private System.Windows.Forms.MaskedTextBox year_maskedTextBox;
+        private System.Windows.Forms.MaskedTextBox duration_maskedTextBox;
     }
 }

@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Action.cs" />
+    <Compile Include="Forms\Change\ChangeMovieInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Change\ChangeMovieInfo.Designer.cs">
+      <DependentUpon>ChangeMovieInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Input\AddNewFilm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     <Compile Include="Forms\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Change\ChangeMovieInfo.resx">
+      <DependentUpon>ChangeMovieInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Change\ChangeCinemaDetails.resx">
       <DependentUpon>ChangeCinemaDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,6 +148,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

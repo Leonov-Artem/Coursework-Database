@@ -46,9 +46,8 @@ namespace CourseWork
                 else if (selected_information.Text == "Фильмы")
                 {
                     if (selected_action.Text == "Ввести данные")
-                    {
+                        ShowAddNewFilmForm();
 
-                    }
                     else if (selected_action.Text == "Изменить данные")
                     {
 
@@ -250,6 +249,7 @@ namespace CourseWork
             else
                 MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
         }
+
         private void ShowAddNewCinemaForm()
         {
             AddNewCinema addNewCinema = new AddNewCinema(connection);
@@ -259,6 +259,11 @@ namespace CourseWork
         {
             ChangeCinemaDetails change = new ChangeCinemaDetails(connection);
             change.ShowDialog();
+        }
+        private void ShowAddNewFilmForm()
+        {
+            AddNewFilm addNewFilm = new AddNewFilm(connection);
+            addNewFilm.ShowDialog();
         }
 
         ///////////////////////ДОПОЛНИТЕЛЬНЫЕ МЕТОДЫ////////////////////////////////
