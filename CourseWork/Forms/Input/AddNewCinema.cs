@@ -50,16 +50,7 @@ namespace CourseWork
         }
 
         /////////////////////////////////////////////////////////////////////////////////
-        private string GetNameFromTextBox()
-        {
-            string[] name = name_textBox.Text.Split(new string[] {" ", "-", "," }, StringSplitOptions.RemoveEmptyEntries);
-
-            string result = "";
-            foreach (var n in name)
-                result += n + " ";
-
-            return result.Remove(result.Length - 1, 1);
-        }
+        private string GetNameFromTextBox() => name_textBox.Text;
         private string GetCategoryFromTextBox() => category_textBox.Text;
         private string GetStreetFromTextBox() => street_textBox.Text;
         private string GetHouseFromTextBox() => house_textBox.Text;
