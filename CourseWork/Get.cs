@@ -29,6 +29,19 @@ namespace CourseWork
 
             return list.ToArray();
         }
+        public string CinemaId(string name, string category, string address_id)
+        {
+            string sql = $"SELECT get_cinema_id('{name}', {category}, {address_id});";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            return command.ExecuteScalar().ToString();
+        }
+        public string CinemaCategory(string name, string addressID)
+        {
+            string sql = $"SELECT get_cinema_category('{name}', {addressID})";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            return command.ExecuteScalar().ToString();
+        }
+
         public string Address(string cinema_name)
         {
             string sql = $"call get_address('{cinema_name}');";
@@ -40,7 +53,7 @@ namespace CourseWork
             {
                 string street_name = СonvertFirstCharacterToUpperCase(reader[0].ToString());
                 string house_number = reader[1].ToString();
-                result += $"ул. {street_name} {house_number}";
+                result += $"ул. {street_name}, {house_number}";
             }
             reader.Close();
 
@@ -52,6 +65,7 @@ namespace CourseWork
             MySqlCommand command = new MySqlCommand(sql, connection);
             return command.ExecuteScalar().ToString();
         }
+
         public string[] InfoAboutFilms()
         {
             string sql = "SELECT film_name, producer, year_of_issue FROM films;";
