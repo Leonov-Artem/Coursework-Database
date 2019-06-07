@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.films_comboBox = new System.Windows.Forms.ComboBox();
             this.Backwards_button = new System.Windows.Forms.Button();
             this.Change_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -43,14 +43,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Фильмы:";
             // 
-            // comboBox1
+            // films_comboBox
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(85, 28);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(167, 24);
-            this.comboBox1.TabIndex = 1;
+            this.films_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.films_comboBox.FormattingEnabled = true;
+            this.films_comboBox.Location = new System.Drawing.Point(85, 28);
+            this.films_comboBox.Name = "films_comboBox";
+            this.films_comboBox.Size = new System.Drawing.Size(167, 24);
+            this.films_comboBox.TabIndex = 1;
             // 
             // Backwards_button
             // 
@@ -79,7 +79,7 @@
             this.ClientSize = new System.Drawing.Size(583, 450);
             this.Controls.Add(this.Change_button);
             this.Controls.Add(this.Backwards_button);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.films_comboBox);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ChangeMovieInfo";
@@ -93,7 +93,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox films_comboBox;
         private System.Windows.Forms.Button Backwards_button;
         private System.Windows.Forms.Button Change_button;
     }

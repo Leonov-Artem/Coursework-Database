@@ -49,9 +49,8 @@ namespace CourseWork
                         ShowAddNewFilmForm();
 
                     else if (selected_action.Text == "Изменить данные")
-                    {
+                        ShowChangeFilmDetailsForm();
 
-                    }
                     else if (selected_action.Text == "Удалить данные")
                         DeleteFilm();
 
@@ -254,6 +253,11 @@ namespace CourseWork
         {
             AddNewCinema addNewCinema = new AddNewCinema(connection);
             addNewCinema.ShowDialog();
+        }
+        private void ShowChangeFilmDetailsForm()
+        {
+            ChangeMovieInfo changeMovieInfo = new ChangeMovieInfo(connection);
+            changeMovieInfo.ShowDialog();
         }
         private void ShowChangeCinemaDetailsForm()
         {
