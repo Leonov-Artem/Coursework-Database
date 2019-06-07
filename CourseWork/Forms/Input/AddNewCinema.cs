@@ -25,17 +25,14 @@ namespace CourseWork
         {
             string cinema_name = GetNameFromTextBox();
             string category = GetCategoryFromTextBox();
-            string address = GetAddressFromTextBox();
+            string street = GetStreetFromTextBox();
+            string house = GetHouseFromTextBox();
 
-            if (cinema_name != "" && category != "" && address != "")
+            if (cinema_name != "" && category != "" && street != "" && house != "")
             {
                 Action action = new Action(connection);
 
-                string[] split = address.Split(new string[] {" ", ".", ",", "улица", "ул" }, StringSplitOptions.RemoveEmptyEntries);
-                string street_name = split[0];
-                string house_number = split[1];
-
-                if (action.AddNewCinema(cinema_name, category, street_name, house_number))
+                if (action.AddNewCinema(cinema_name, category, street, house))
                     MessageBox.Show($"Кинотеатр '{cinema_name}' был успешно добавлен!", "Оповещение");
                 else
                     MessageBox.Show("Введите необходимые данные!", "Ошибка!");
@@ -64,6 +61,7 @@ namespace CourseWork
             return result;
         }
         private string GetCategoryFromTextBox() => category_textBox.Text;
-        private string GetAddressFromTextBox() => address_textBox.Text;
+        private string GetStreetFromTextBox() => street_textBox.Text;
+        private string GetHouseFromTextBox() => house_textBox.Text;
     }
 }

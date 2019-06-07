@@ -43,10 +43,7 @@ namespace CourseWork
             string id = get.AddressId(street, house);
             string category = get.CinemaCategory(name, id);
 
-            name_textBox.Text = name;
-            catefory_textBox.Text = category;
-            street_textBox.Text = street;
-            house_textBox.Text = house;
+            SetFields(name, category, street, house);
         }
 
         /////////////////////////////////////////////////////////////////////////////////
@@ -84,6 +81,13 @@ namespace CourseWork
             house = match.Groups[1].Value;
         }
 
+        private void SetFields(string name, string category, string street, string house)
+        {
+            name_textBox.Text = name;
+            catefory_textBox.Text = category;
+            street_textBox.Text = street;
+            house_textBox.Text = house;
+        }
 
         private string SplitAndJoin(string name)
         {
