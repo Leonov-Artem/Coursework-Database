@@ -26,11 +26,41 @@ namespace CourseWork
 
             return list.ToArray();
         }
+        public string FilmId(string name, string producer, string year)
+        {
+            string sql = $"select get_film_id('{name}', '{producer}', '{year}')";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            return command.ExecuteScalar().ToString();
+        }
         static public void FilmNameProdecerYear(string film_description, out string film_name, out string producer, out string year)
         {
             film_name = GetFilmName(film_description);
             producer = GetProducer(film_description);
             year = GetYear(film_description);
+        }
+        public void AllInfoAboutFilm(string film_id,out string name,
+                                                    out string producer   ,
+                                                    out string country    ,
+                                                    out string year       ,
+                                                    out string genre      ,
+                                                    out string duration   ,
+                                                    out string description,
+                                                    out string actors     )
+        {
+            string sql = $"call get_all_info_about_film({film_id})";
+            MySqlCommand command = new MySqlCommand(sql, connection);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            string[] decription = GetDescriprion(reader);
+
+            name        = decription[0];
+            producer    = decription[1];
+            country     = decription[2];
+            year        = decription[3];
+            genre       = decription[4];
+            duration    = decription[5];
+            description = decription[6];
+            actors      = decription[7];
         }
 
         static private string GetFilmName(string film_description)
@@ -56,6 +86,22 @@ namespace CourseWork
             year = SplitAndJoin(year);
 
             return year;
+        }
+        private string[] GetDescriprion(MySqlDataReader reader)
+        {
+            string str = "";
+            while (reader.Read())
+                str += "{" + reader[0].ToString() + "}" +
+                      "{" + reader[1].ToString() + "}" +
+                      "{" + reader[2].ToString() + "}" +
+                      "{" + reader[3].ToString() + "}" +
+                      "{" + reader[4].ToString() + "}" +
+                      "{" + reader[5].ToString() + "}" +
+                      "{" + reader[6].ToString() + "}" +
+                      "{" + reader[7].ToString();
+            reader.Close();
+
+            return str.Split(new char[] { '{', '}' }, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }

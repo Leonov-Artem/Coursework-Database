@@ -16,6 +16,14 @@ namespace CourseWork
         MySqlConnection connection;
         Get get;
         Action action;
+        string old_name;
+        string old_producer;
+        string old_country;
+        string old_year;
+        string old_genre;
+        string old_duration;
+        string old_description;
+        string old_actors;
 
         public ChangeMovieInfo(MySqlConnection connection)
         {
@@ -31,9 +39,49 @@ namespace CourseWork
 
         private void Change_button_Click(object sender, EventArgs e)
         {
+            string new_name         = GetNameFromTextBox();
+            string new_producer     = GetProducerFromTextBox();
+            string new_country      = GetCountryFromTextBox();
+            string new_year         = GetYearFromTextBox();
+            string new_genre        = GetGenreFromTextBox();
+            string new_duration     = GetDurationFromTextBox();
+            string new_description  = GetDescriptionFromTextBox();
+            string new_actors       = GetActorsFromTextBox();
 
+            if (new_name != "" &&
+                new_producer != "" &&
+                new_country != "" &&
+                new_year != "" &&
+                new_genre != "" &&
+                new_duration != "" &&
+                new_description != "" &&
+                new_actors != "")
+            {
+                action.AddNewFilm(new_name, new_producer, new_country, new_year, new_genre, new_duration, new_description, new_actors);
+                MessageBox.Show("Запись была успешно изменена!", "Оповещение");
+            }
+            else
+                MessageBox.Show("Введите данные!", "Ошибка!");
         }
 
+        private void films_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selected = films_comboBox.SelectedItem.ToString();
+            Get.FilmNameProdecerYear(selected, out string film_name, out string prod, out string year_of_issue);
+
+            string film_id = get.FilmId(film_name, prod, year_of_issue);
+            get.AllInfoAboutFilm(film_id, out string name,
+                                                    out string producer,
+                                                    out string country,
+                                                    out string year,
+                                                    out string genre,
+                                                    out string duration,
+                                                    out string description,
+                                                    out string actors);
+            //string category = get.CinemaCategory(name, id);
+
+            //SetFields(name, category, street, house);
+        }
 
         //////////////////////////////////////////////////////////////////////////////
         private void UpdateMovieInfo()
@@ -53,5 +101,33 @@ namespace CourseWork
             foreach (var film in films)
                 films_comboBox.Items.Add(film);
         }
+
+        private void SetFields(string name,
+                               string producer   ,
+                               string country    ,
+                               string year       ,
+                               string genre      ,
+                               string duration   ,
+                               string description,
+                               string actors     )
+        {
+            film_name_textBox.Text = old_name = name;
+            producer_textBox.Text = old_producer = producer;
+            country_textBox.Text = old_country = country;
+            year_maskedTextBox.Text = old_year = year;
+            description_richTextBox.Text = old_genre = genre;
+            actors_richTextBox.Text = old_duration = duration;
+            duration_maskedTextBox.Text = old_description = description;
+            genre_textBox.Text = old_actors = actors;
+        }
+
+        private string GetNameFromTextBox()         => film_name_textBox        .Text;
+        private string GetProducerFromTextBox()     => producer_textBox         .Text;
+        private string GetCountryFromTextBox()      => country_textBox          .Text;
+        private string GetYearFromTextBox()         => year_maskedTextBox       .Text;
+        private string GetDescriptionFromTextBox()  => description_richTextBox  .Text;
+        private string GetActorsFromTextBox()       => actors_richTextBox       .Text;
+        private string GetDurationFromTextBox()     => duration_maskedTextBox   .Text;
+        private string GetGenreFromTextBox()        => genre_textBox            .Text;
     }
 }

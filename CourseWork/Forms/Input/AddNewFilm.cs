@@ -44,7 +44,7 @@ namespace CourseWork
                 actors      != "")
             {
                 action.AddNewFilm(name, producer, country, year, genre, duration, description, actors);
-                MessageBox.Show("Фильм был успешно добавлен!", "Оповещение");
+                MessageBox.Show($"Фильм '{name}' был успешно добавлен!", "Оповещение");
             }
             else
                 MessageBox.Show("Введите данные!", "Ошибка!");
