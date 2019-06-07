@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cinema_comboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.catefory_textBox = new System.Windows.Forms.TextBox();
+            this.category_textBox = new System.Windows.Forms.TextBox();
             this.name_textBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,7 +69,7 @@
             this.groupBox1.Controls.Add(this.street_textBox);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.catefory_textBox);
+            this.groupBox1.Controls.Add(this.category_textBox);
             this.groupBox1.Controls.Add(this.name_textBox);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -80,12 +80,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Изменения";
             // 
-            // catefory_textBox
+            // category_textBox
             // 
-            this.catefory_textBox.Location = new System.Drawing.Point(113, 71);
-            this.catefory_textBox.Name = "catefory_textBox";
-            this.catefory_textBox.Size = new System.Drawing.Size(182, 22);
-            this.catefory_textBox.TabIndex = 4;
+            this.category_textBox.Location = new System.Drawing.Point(113, 71);
+            this.category_textBox.Name = "category_textBox";
+            this.category_textBox.Size = new System.Drawing.Size(182, 22);
+            this.category_textBox.TabIndex = 4;
             // 
             // name_textBox
             // 
@@ -194,7 +194,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Backwards_button;
         private System.Windows.Forms.Button Change_button;
-        private System.Windows.Forms.TextBox catefory_textBox;
+        private System.Windows.Forms.TextBox category_textBox;
         private System.Windows.Forms.TextBox name_textBox;
         private System.Windows.Forms.TextBox house_textBox;
         private System.Windows.Forms.TextBox street_textBox;

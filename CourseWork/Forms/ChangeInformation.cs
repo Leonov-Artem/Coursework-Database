@@ -251,12 +251,13 @@ namespace CourseWork
                 string cinema = comboBox.SelectedItem.ToString();
                 Get.NameAndCinemaAddress(cinema, out string cinema_name, out string street_name, out string house_number);
 
-                string id = get.AddressId(street_name, house_number);
+                string address_id = get.AddressId(street_name, house_number);
 
-                if (action.DeleteCinema(cinema_name, id))
+                if (action.DeleteCinema(cinema_name, address_id))
                 {
                     MessageBox.Show($"Кинотеатр '{cinema_name}' был успешно удален!", "Оповещение");
                     comboBox.Items.Remove(cinema);
+                    action.DeleteAddress(address_id);
                 }
                 else
                     MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
