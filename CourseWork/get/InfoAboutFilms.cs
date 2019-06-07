@@ -13,8 +13,7 @@ namespace CourseWork
         public string[] InfoAboutFilms()
         {
             string sql = "SELECT film_name, producer, year_of_issue FROM films;";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            MySqlDataReader reader = command.ExecuteReader();
+            MySqlDataReader reader = Command(sql).ExecuteReader();
 
             List<string> list = new List<string>();
             while (reader.Read())
@@ -29,8 +28,7 @@ namespace CourseWork
         public string FilmId(string name, string producer, string year)
         {
             string sql = $"select get_film_id('{name}', '{producer}', '{year}')";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            return command.ExecuteScalar().ToString();
+            return Command(sql).ExecuteScalar().ToString();
         }
         static public void FilmNameProdecerYear(string film_description, out string film_name, out string producer, out string year)
         {
@@ -48,8 +46,7 @@ namespace CourseWork
                                                     out string actors     )
         {
             string sql = $"call get_all_info_about_film({film_id})";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            MySqlDataReader reader = command.ExecuteReader();
+            MySqlDataReader reader = Command(sql).ExecuteReader();
 
             string[] decription = GetDescriprion(reader);
 

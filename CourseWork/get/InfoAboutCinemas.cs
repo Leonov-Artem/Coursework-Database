@@ -13,8 +13,7 @@ namespace CourseWork
         public string[] Cinemas()
         {
             string sql = $"SELECT name FROM movie_theaters;";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            MySqlDataReader reader = command.ExecuteReader();
+            MySqlDataReader reader = Command(sql).ExecuteReader();
 
             List<string> list = new List<string>();
             while (reader.Read())
@@ -29,14 +28,12 @@ namespace CourseWork
         public string CinemaId(string name, string category, string address_id)
         {
             string sql = $"SELECT get_cinema_id('{name}', {category}, {address_id});";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            return command.ExecuteScalar().ToString();
+            return Command(sql).ExecuteScalar().ToString();
         }
         public string CinemaCategory(string name, string addressID)
         {
             string sql = $"SELECT get_cinema_category('{name}', {addressID})";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            return command.ExecuteScalar().ToString();
+            return Command(sql).ExecuteScalar().ToString();
         }
         static public void NameAndCinemaAddress(string cinema_decription, out string name, out string street, out string house)
         {

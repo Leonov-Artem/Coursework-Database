@@ -13,6 +13,7 @@ namespace CourseWork
         MySqlConnection connection;
 
         public Get(MySqlConnection connection) => this.connection = connection;
+        public MySqlCommand Command(string sql) => new MySqlCommand(sql, connection);
 
         static private string SplitAndJoin(string name)
         {

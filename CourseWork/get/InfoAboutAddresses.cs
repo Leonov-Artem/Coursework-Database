@@ -12,8 +12,7 @@ namespace CourseWork
         public string Address(string cinema_name)
         {
             string sql = $"call get_address('{cinema_name}');";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            MySqlDataReader reader = command.ExecuteReader();
+            MySqlDataReader reader = Command(sql).ExecuteReader();
 
             string result = "";
             while (reader.Read())
@@ -29,8 +28,7 @@ namespace CourseWork
         public string AddressId(string street_name, string house_number)
         {
             string sql = $"SELECT get_address_id('{street_name}', '{house_number}');";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            return command.ExecuteScalar().ToString();
+            return Command(sql).ExecuteScalar().ToString();
         }
     }
 }
