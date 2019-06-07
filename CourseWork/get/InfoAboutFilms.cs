@@ -58,9 +58,9 @@ namespace CourseWork
             country     = decription[2];
             year        = decription[3];
             genre       = decription[4];
-            duration    = decription[5];
-            description = decription[6];
-            actors      = decription[7];
+            description = decription[5];
+            actors      = decription[6];
+            duration    = decription[7];
         }
 
         static private string GetFilmName(string film_description)

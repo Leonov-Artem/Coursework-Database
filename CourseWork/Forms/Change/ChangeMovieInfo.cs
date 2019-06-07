@@ -78,7 +78,8 @@ namespace CourseWork
                                                     out string duration,
                                                     out string description,
                                                     out string actors);
-            //string category = get.CinemaCategory(name, id);
+
+            SetFields(name, producer, country, year, genre, duration, description, actors);
 
             //SetFields(name, category, street, house);
         }
@@ -111,14 +112,14 @@ namespace CourseWork
                                string description,
                                string actors     )
         {
-            film_name_textBox.Text = old_name = name;
-            producer_textBox.Text = old_producer = producer;
-            country_textBox.Text = old_country = country;
-            year_maskedTextBox.Text = old_year = year;
-            description_richTextBox.Text = old_genre = genre;
-            actors_richTextBox.Text = old_duration = duration;
-            duration_maskedTextBox.Text = old_description = description;
-            genre_textBox.Text = old_actors = actors;
+            film_name_textBox.Text          = old_name = name;
+            producer_textBox.Text           = old_producer = producer;
+            country_textBox.Text            = old_country = country;
+            year_maskedTextBox.Text         = old_year = year;
+            description_richTextBox.Text    = old_description = description;
+            actors_richTextBox.Text         = old_actors = actors;
+            duration_maskedTextBox.Text     = old_duration = duration;
+            genre_textBox.Text              = old_genre = genre;
         }
 
         private string GetNameFromTextBox()         => film_name_textBox        .Text;
