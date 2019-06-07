@@ -44,24 +44,15 @@ namespace CourseWork
 
         static private string GetCinemaName(string cinema_decription)
         {
-            var match = Regex.Match(cinema_decription, @"^(.+)\s+\(");
-            string name = match.Groups[1].Value;
-            name = SplitAndJoin(name);
-
-            return name;
+            string name = GetValue(cinema_decription, @"^(.+)\s+\(");
+            return SplitAndJoin(name);
         }
         static private string GetStreet(string cinema_decription)
         {
-            var match = Regex.Match(cinema_decription, @"\(.+\.\s+(.+)\,");
-            string street = match.Groups[1].Value;
-            street = SplitAndJoin(street);
-
-            return street;
+            string street = GetValue(cinema_decription, @"\(.+\.\s+(.+)\,");
+            return SplitAndJoin(street);
         }
         static private string GetHouseNumber(string cinema_decription)
-        {
-            var match = Regex.Match(cinema_decription, @",\s+(.+)\)");
-            return match.Groups[1].Value;
-        }
+            => GetValue(cinema_decription, @",\s+(.+)\)");
     }
 }

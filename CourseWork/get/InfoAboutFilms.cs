@@ -62,28 +62,17 @@ namespace CourseWork
 
         static private string GetFilmName(string film_description)
         {
-            var match = Regex.Match(film_description, @"^(.+)\s+\(");
-            string name = match.Groups[1].Value;
-            name = SplitAndJoin(name);
-
-            return name;
+            string name = GetValue(film_description, @"^(.+)\s+\(");
+            return SplitAndJoin(name);
         }
         static private string GetProducer(string film_description)
         {
-            var match = Regex.Match(film_description, @"\s+\((.+)\,");
-            string producer = match.Groups[1].Value;
-            producer = SplitAndJoin(producer);
-
-            return producer;
+            string producer = GetValue(film_description, @"\s+\((.+)\,");
+            return SplitAndJoin(producer);
         }
         static private string GetYear(string film_description)
-        {
-            var match = Regex.Match(film_description, @",\s+(.+)\)");
-            string year = match.Groups[1].Value;
-            year = SplitAndJoin(year);
+            => GetValue(film_description, @",\s+(.+)\)");
 
-            return year;
-        }
         private string[] GetDescriprion(MySqlDataReader reader)
         {
             string str = "";

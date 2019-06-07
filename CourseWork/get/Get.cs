@@ -27,5 +27,10 @@ namespace CourseWork
         }
         private string СonvertFirstCharacterToUpperCase(string word)
             => word.Substring(0, 1).ToUpper() + word.Substring(1, word.Length - 1);
+        static private string GetValue(string decription, string pattern)
+        {
+            var match = Regex.Match(decription, pattern);
+            return match.Groups[1].Value;
+        }
     }
 }
