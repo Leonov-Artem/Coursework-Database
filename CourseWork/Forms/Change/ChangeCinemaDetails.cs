@@ -28,8 +28,7 @@ namespace CourseWork
             InitializeComponent();
             this.connection = connection;
 
-            cinemas = GetCinemasWithAddresses();
-            AddCinemasToComboBox(cinemas);
+            UpdateComboBox();
 
             action = new Action(connection);
             get = new Get(connection);
@@ -51,6 +50,8 @@ namespace CourseWork
                 action.UpdateCinema(cinema_id, address_id, new_name, new_category, new_street, new_house);
 
                 MessageBox.Show("Данные успешно изменены!", "Оповещение");
+                ClearAllFields();
+                UpdateComboBox();
             }
             else
                 MessageBox.Show("Проверьте данные!", "Ошибка!");
@@ -69,6 +70,12 @@ namespace CourseWork
         }
 
         /////////////////////////////////////////////////////////////////////////////////
+        private void UpdateComboBox()
+        {
+            ClearComboBox();
+            cinemas = GetCinemasWithAddresses();
+            AddCinemasToComboBox(cinemas);
+        }
         private string[] GetCinemasWithAddresses()
         {
             Get get = new Get(connection);
@@ -88,6 +95,11 @@ namespace CourseWork
             foreach (var cinema in cinemas)
                 cinema_comboBox.Items.Add(cinema);
         }
+        private void ClearComboBox()
+        {
+            if (cinema_comboBox.Items.Count != 0)
+                cinema_comboBox.Items.Clear();
+        }
 
         private void SetFields(string name, string category, string street, string house)
         {
@@ -96,10 +108,17 @@ namespace CourseWork
             street_textBox.Text = old_street = street;
             house_textBox.Text = old_house = house;
         }
+        private void ClearAllFields()
+        {
+            name_textBox.Text = old_name            = "";
+            category_textBox.Text = old_category    = "";
+            street_textBox.Text = old_street        = "";
+            house_textBox.Text = old_house = "";
+        }
 
-        private string GetNameFromTextBox() => name_textBox.Text;
+        private string GetNameFromTextBox()     => name_textBox.Text;
         private string GetCategoryFromTextBox() => category_textBox.Text;
-        private string GetStreetFromTextBox() => street_textBox.Text;
-        private string GetHouseFromTextBox() => house_textBox.Text;
+        private string GetStreetFromTextBox()   => street_textBox.Text;
+        private string GetHouseFromTextBox()    => house_textBox.Text;
     }
 }
