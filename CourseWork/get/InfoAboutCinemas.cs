@@ -38,7 +38,6 @@ namespace CourseWork
             MySqlCommand command = new MySqlCommand(sql, connection);
             return command.ExecuteScalar().ToString();
         }
-
         static public void NameAndCinemaAddress(string cinema_decription, out string name, out string street, out string house)
         {
             name = GetCinemaName(cinema_decription);

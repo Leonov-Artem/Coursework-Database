@@ -12,8 +12,7 @@ namespace CourseWork
         public void DeleteAddress(string id)
         {
             string sql = $"call delete_address({id});";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            command.ExecuteNonQuery();
+            Command(sql).ExecuteNonQuery();
         }
     }
 }

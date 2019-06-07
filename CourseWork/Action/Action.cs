@@ -12,5 +12,6 @@ namespace CourseWork
         MySqlConnection connection;
 
         public Action(MySqlConnection connection) => this.connection = connection;
+        private MySqlCommand Command(string sql) => new MySqlCommand(sql, connection);
     }
 }

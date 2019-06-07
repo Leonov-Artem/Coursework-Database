@@ -12,8 +12,7 @@ namespace CourseWork
         public bool DeleteFIlm(string film_name, string producer, string year)
         {
             string sql = $"select delete_film('{film_name}', '{producer}', '{year}');";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            return (bool)command.ExecuteScalar();
+            return (bool)Command(sql).ExecuteScalar();
         }
         public void UpdateFilm(string film_id,
                                string name,
@@ -34,8 +33,7 @@ namespace CourseWork
                 $"'{new_duration}'," +
                 $"'{new_description}'," +
                 $"'{new_actors}');";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            command.ExecuteNonQuery();
+            Command(sql).ExecuteNonQuery();
         }
         public void AddNewFilm(string name,
                                string producer,
@@ -55,8 +53,7 @@ namespace CourseWork
                 $"'{description}'," +
                 $"'{actors}'" +
                 $");";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            command.ExecuteNonQuery();
+            Command(sql).ExecuteNonQuery();
         }
     }
 }
