@@ -29,7 +29,7 @@ namespace CourseWork
         private void forward_button_Click(object sender, EventArgs e)
         {
             RadioButton selected_information = SomeRadioButtonsChecked(information_groupBox.Controls);
-               RadioButton selected_action = SomeRadioButtonsChecked(action_groupBox.Controls);
+            RadioButton selected_action = SomeRadioButtonsChecked(action_groupBox.Controls);
 
             if (selected_action != null && selected_information != null)
             {
@@ -78,10 +78,10 @@ namespace CourseWork
 
                     else if (selected_action.Text == "Изменить данные")
                         ShowChangeHallsInfo();
-                    else if (selected_action.Text == "Удалить данные")
-                    {
 
-                    }
+                    else if (selected_action.Text == "Удалить данные")
+                        ShowDeleteHall();
+
                 }
                 else
                     MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
@@ -114,24 +114,12 @@ namespace CourseWork
                 }
                 else if (selected_information.Text == "Залы")
                 {
-                    string[] cinemas = get.CinemasWithAddresses();
-                    AddCinemasToComboBox2(cinemas);
                 }
                 else if (selected_information.Text == "Сеансы")
                 {
 
                 }
             }
-        }
-
-        private void cinema_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
-
-            string cinema_desc = comboBox.SelectedItem.ToString();
-            string cinema_id = get.CinemaId(cinema_desc);
-            string[] halls = get.HallsNumbers(cinema_id);
-            AddHallsToComboBox(halls);
         }
 
         ////////////////////ДЛЯ КИНОТЕАТРОВ//////////////////////////////////////////
@@ -204,80 +192,6 @@ namespace CourseWork
             return comboBox;
         }
 
-        ////////////////////ДЛЯ ЗАЛОВ///////////////////////////////////////////////
-        private void AddCinemasToComboBox2(string[] cinemas)
-        {
-            Label label = CreateAndAddCinemaLabel2();
-            ComboBox comboBox = CreateAndAddCinemaComboBox2(label);
-
-            list_controls.Add(label);
-            list_controls.Add(comboBox);
-
-            int max = cinemas.Max(x => x.Length);
-            comboBox.Width = 5 * max + 30;
-
-            foreach (var cinema in cinemas)
-                comboBox.Items.Add(cinema);
-        }
-        private Label CreateAndAddCinemaLabel2()
-        {
-            Label label = new Label();
-            label.Text = "Кинотеатры: ";
-            label.Location = new Point(information_groupBox.Location.X, information_groupBox.Location.Y + information_groupBox.Size.Height + 10);
-            Controls.Add(label);
-
-            list_controls.Add(label);
-
-            return label;
-        }
-        private ComboBox CreateAndAddCinemaComboBox2(Label label)
-        {
-            ComboBox comboBox = new ComboBox();
-            comboBox.Location = new Point(label.Location.X + label.Width, label.Location.Y);
-            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox.SelectedIndexChanged += new System.EventHandler(cinema_comboBox_SelectedIndexChanged);
-
-            Controls.Add(comboBox);
-
-            return comboBox;
-        }
-
-        private void AddHallsToComboBox(string[] halls)
-        {
-            DeleteHallsContols();
-            Label label = CreateAndAddHallLabel();
-            ComboBox comboBox = CreateAndAddHallsCombobox(label);
-
-            hall_controls.Add(label);
-            hall_controls.Add(comboBox);
-
-            int max = halls.Max(x => x.Length);
-            comboBox.Width = 5 * max + 30;
-
-            foreach (var hall in halls)
-                comboBox.Items.Add(hall);
-        }
-        private Label CreateAndAddHallLabel()
-        {
-            Label label = new Label();
-            label.Text = "Залы: ";
-            label.Location = new Point(information_groupBox.Location.X, information_groupBox.Location.Y + information_groupBox.Size.Height + 40);
-            Controls.Add(label);
-
-            list_controls.Add(label);
-
-            return label;
-        }
-        private ComboBox CreateAndAddHallsCombobox(Label label)
-        {
-            ComboBox comboBox = new ComboBox();
-            comboBox.Location = new Point(label.Location.X + label.Width, label.Location.Y);
-            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            Controls.Add(comboBox);
-
-            return comboBox;
-        }
-
         ////////////////////ДЕЙСТВИЯ////////////////////////////////////////////////
         private void DeleteCinema()
         {
@@ -322,28 +236,12 @@ namespace CourseWork
             else
                 MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
         }
-        private void DeleteHall()
+
+        private void ShowDeleteHall()
         {
-            ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
-
-            if (comboBox != null)
-            {
-
-                //string address_id = get.AddressId(street_name, house_number);
-
-                //if (action.DeleteCinema(cinema_name, address_id))
-                //{
-                //    MessageBox.Show($"Кинотеатр '{cinema_name}' был успешно удален!", "Оповещение");
-                //    comboBox.Items.Remove(cinema);
-                //    action.DeleteAddress(address_id);
-                //}
-                //else
-                //    MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
-            }
-            else
-                MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
+            DeleteHall deleteHall = new DeleteHall(connection);
+            deleteHall.ShowDialog();
         }
-
         private void ShowAddNewHall()
         {
             AddNewHall addNewHall = new AddNewHall(connection);
@@ -417,6 +315,19 @@ namespace CourseWork
                     return combo;
             }
             return null;
+        }
+        private ComboBox[] SomeElementsComboBox(Control.ControlCollection controls)
+        {
+            List<ComboBox> list = new List<ComboBox>();
+            foreach (var control in controls)
+            {
+                ComboBox combo = control as ComboBox;
+
+                if (combo != null && combo.SelectedItem != null)
+                    list.Add(combo);
+            }
+
+            return list.ToArray();
         }
     }
 }

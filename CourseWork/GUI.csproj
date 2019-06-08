@@ -52,6 +52,12 @@
     <Compile Include="Action\ActionWithCinemas.cs" />
     <Compile Include="Action\ActionWithFilms.cs" />
     <Compile Include="Action\Action.cs" />
+    <Compile Include="Forms\Delete\DeleteHall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Delete\DeleteHall.Designer.cs">
+      <DependentUpon>DeleteHall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Change\ChangeHallInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     <Compile Include="Forms\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Delete\DeleteHall.resx">
+      <DependentUpon>DeleteHall.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Change\ChangeHallInfo.resx">
       <DependentUpon>ChangeHallInfo.cs</DependentUpon>
     </EmbeddedResource>
