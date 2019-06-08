@@ -21,5 +21,10 @@ namespace CourseWork
 
             return list.ToArray();
         }
+        public string HallCapacity(string cinema_id, string hall_number)
+        {
+            string slq = $"SELECT get_capacity({cinema_id}, {hall_number});";
+            return Command(slq).ExecuteScalar().ToString();
+        }
     }
 }

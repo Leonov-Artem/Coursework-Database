@@ -16,6 +16,8 @@ namespace CourseWork
         MySqlConnection connection;
         Action action;
         Get get;
+        string cinema_id;
+        string old_hall_humber;
 
         public ChangeHallsInfo(MySqlConnection connection)
         {
@@ -45,13 +47,15 @@ namespace CourseWork
         private void cinema_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string cinema_desc = GetCinemaDescFromComboBox();
-            string cinema_id = get.CinemaId(cinema_desc);
+            cinema_id = get.CinemaId(cinema_desc);
             FillHallComboBox(cinema_id);
         }
 
         private void hall_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            old_hall_humber = GetHallNumberFormComboBox();
+            string capacity = get.HallCapacity(cinema_id, old_hall_humber);
+            SetFields(old_hall_humber, capacity);
         }
 
         ////////////////////////////////////////////////////////////////////////////
@@ -96,9 +100,15 @@ namespace CourseWork
                 hall_comboBox.Items.Clear();
         }
 
+        private void SetFields(string old_hall_humber, string capacity)
+        {
+            hall_number_textBox.Text = old_hall_humber;
+            capacity_textBox.Text = capacity;
+        }
+
         private string GetCinemaDescFromComboBox() => cinema_comboBox.SelectedItem.ToString();
-        private string GetHallFormComboBox() => hall_comboBox.SelectedItem.ToString();
-        private string GetHallNumberFromTextBox() => hall_number_textBox.Text;
+        private string GetHallNumberFormComboBox() => hall_comboBox.SelectedItem.ToString();
+        private string GetNewHallNumberFromTextBox() => hall_number_textBox.Text;
         private string GetCapacityFromTextBox() => capacity_textBox.Text;
     }
 }
