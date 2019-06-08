@@ -33,10 +33,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cinemas_comboBox = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.hall_number_textBox = new System.Windows.Forms.TextBox();
             this.capacity_textBox = new System.Windows.Forms.TextBox();
+            this.hall_number_textBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,14 +91,21 @@
             this.panel1.Size = new System.Drawing.Size(351, 108);
             this.panel1.TabIndex = 4;
             // 
-            // label2
+            // capacity_textBox
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 43);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(90, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Номер зала:";
+            this.capacity_textBox.Location = new System.Drawing.Point(106, 75);
+            this.capacity_textBox.Name = "capacity_textBox";
+            this.capacity_textBox.Size = new System.Drawing.Size(239, 22);
+            this.capacity_textBox.TabIndex = 7;
+            this.capacity_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.capacity_textBox_KeyPress);
+            // 
+            // hall_number_textBox
+            // 
+            this.hall_number_textBox.Location = new System.Drawing.Point(106, 43);
+            this.hall_number_textBox.Name = "hall_number_textBox";
+            this.hall_number_textBox.Size = new System.Drawing.Size(239, 22);
+            this.hall_number_textBox.TabIndex = 6;
+            this.hall_number_textBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.capacity_textBox_KeyPress);
             // 
             // label3
             // 
@@ -109,19 +116,14 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Вместимсть:";
             // 
-            // hall_number_textBox
+            // label2
             // 
-            this.hall_number_textBox.Location = new System.Drawing.Point(106, 43);
-            this.hall_number_textBox.Name = "hall_number_textBox";
-            this.hall_number_textBox.Size = new System.Drawing.Size(239, 22);
-            this.hall_number_textBox.TabIndex = 6;
-            // 
-            // capacity_textBox
-            // 
-            this.capacity_textBox.Location = new System.Drawing.Point(106, 75);
-            this.capacity_textBox.Name = "capacity_textBox";
-            this.capacity_textBox.Size = new System.Drawing.Size(239, 22);
-            this.capacity_textBox.TabIndex = 7;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Номер зала:";
             // 
             // AddNewHall
             // 

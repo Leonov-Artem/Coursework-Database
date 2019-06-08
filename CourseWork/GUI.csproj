@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Action\ActionWithHalls.cs" />
     <Compile Include="Action\ActionWithAddresses.cs" />
     <Compile Include="Action\ActionWithCinemas.cs" />
     <Compile Include="Action\ActionWithFilms.cs" />

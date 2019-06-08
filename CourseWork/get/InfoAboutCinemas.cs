@@ -30,17 +30,6 @@ namespace CourseWork
             string sql = $"SELECT get_cinema_id('{name}', {category}, {address_id});";
             return Command(sql).ExecuteScalar().ToString();
         }
-        public string CinemaCategory(string name, string addressID)
-        {
-            string sql = $"SELECT get_cinema_category('{name}', {addressID})";
-            return Command(sql).ExecuteScalar().ToString();
-        }
-        static public void NameAndCinemaAddress(string cinema_decription, out string name, out string street, out string house)
-        {
-            name = GetCinemaName(cinema_decription);
-            street = GetStreet(cinema_decription);
-            house = GetHouseNumber(cinema_decription);
-        }
         public string CinemaId(string cinema_decription)
         {
             NameAndCinemaAddress(cinema_decription, out string cinema_name, out string street, out string house);
@@ -49,6 +38,32 @@ namespace CourseWork
 
             return CinemaId(cinema_name, category, address_id);
         }
+
+        public string CinemaCategory(string name, string addressID)
+        {
+            string sql = $"SELECT get_cinema_category('{name}', {addressID})";
+            return Command(sql).ExecuteScalar().ToString();
+        }
+        public string CinemaCategory(string cinema_decription)
+        {
+            NameAndCinemaAddress(cinema_decription, out string cinema_name, out string street, out string house);
+            string address_id = AddressId(street, house);
+            return CinemaCategory(cinema_name, address_id);
+        }
+
+        public string CurrnetHallsNumber(string cinema_id)
+        {
+            string sql = $"select get_current_number_halls ({cinema_id})";
+            return Command(sql).ExecuteScalar().ToString();
+        }
+
+        static public void NameAndCinemaAddress(string cinema_decription, out string name, out string street, out string house)
+        {
+            name = GetCinemaName(cinema_decription);
+            street = GetStreet(cinema_decription);
+            house = GetHouseNumber(cinema_decription);
+        }
+        
         public string[] CinemasWithAddresses()
         {
             string[] cinemas = Cinemas();
