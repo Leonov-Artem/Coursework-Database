@@ -28,7 +28,7 @@ namespace CourseWork
         private void forward_button_Click(object sender, EventArgs e)
         {
             RadioButton selected_information = SomeRadioButtonsChecked(information_groupBox.Controls);
-            RadioButton selected_action = SomeRadioButtonsChecked(action_groupBox.Controls);
+               RadioButton selected_action = SomeRadioButtonsChecked(action_groupBox.Controls);
 
             if (selected_action != null && selected_information != null)
             {
@@ -73,9 +73,8 @@ namespace CourseWork
                 else if (selected_information.Text == "Залы")
                 {
                     if (selected_action.Text == "Ввести данные")
-                    {
+                        ShowAddNewHall();
 
-                    }
                     else if (selected_action.Text == "Изменить данные")
                     {
 
@@ -240,6 +239,11 @@ namespace CourseWork
                 MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
         }
 
+        private void ShowAddNewHall()
+        {
+            AddNewHall addNewHall = new AddNewHall(connection);
+            addNewHall.ShowDialog();
+        }
         private void ShowAddNewCinemaForm()
         {
             AddNewCinema addNewCinema = new AddNewCinema(connection);
