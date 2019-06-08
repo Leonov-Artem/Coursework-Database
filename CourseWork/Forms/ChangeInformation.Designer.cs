@@ -126,6 +126,7 @@
             this.radioButton7.TabStop = true;
             this.radioButton7.Text = "Удалить данные";
             this.radioButton7.UseVisualStyleBackColor = true;
+            this.radioButton7.CheckedChanged += new System.EventHandler(this.ActionSwitch);
             // 
             // radioButton6
             // 
@@ -137,6 +138,7 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Изменить данные";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.ActionSwitch);
             // 
             // radioButton5
             // 
@@ -148,6 +150,7 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Ввести данные";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.ActionSwitch);
             // 
             // backwards_button
             // 

@@ -49,6 +49,16 @@ namespace CourseWork
 
             return CinemaId(cinema_name, category, address_id);
         }
+        public string[] CinemasWithAddresses()
+        {
+            string[] cinemas = Cinemas();
+            List<string> list = new List<string>();
+
+            foreach (var cinema in cinemas)
+                list.Add(cinema + " (" + Address(cinema.ToLower()) + ")");
+
+            return list.ToArray();
+        }
 
         static private string GetCinemaName(string cinema_decription)
         {

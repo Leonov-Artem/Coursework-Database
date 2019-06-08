@@ -94,42 +94,38 @@ namespace CourseWork
 
         private void InformationSwitch(object sender, EventArgs e)
         {
+            
+        }
+        private void ActionSwitch(object sender, EventArgs e)
+        {
             RadioButton radioButton = (RadioButton)sender;
+            RadioButton selected_information = SomeRadioButtonsChecked(information_groupBox.Controls);
 
-            if (radioButton.Checked)
+            DeleteAllNewControls();
+            if (radioButton.Checked && selected_information != null && radioButton.Text == "Удалить данные")
             {
-                DeleteAllNewControls();
-
-                switch(radioButton.Text)
+                if (selected_information.Text == "Кинотеатры")
                 {
-                    case "Кинотеатры":
-                        string[] cinemas = GetCinemasWithAddresses();
-                        AddCinemasToComboBox(cinemas);
-                        break;
-                    case "Фильмы":
-                        string[] info = GetInfoAboutFilms();
-                        AddFilmsToComboBox(info);
-                        break;
-                    case "Сеансы":
-                        break;
-                    case "Залы":
-                        break;
+                    string[] cinemas = get.CinemasWithAddresses();
+                    AddCinemasToComboBox(cinemas);
+                }
+                else if (selected_information.Text == "Фильмы")
+                {
+                    string[] info = get.InfoAboutFilms();
+                     AddFilmsToComboBox(info);
+                }
+                else if (selected_information.Text == "Залы")
+                {
+
+                }
+                else if (selected_information.Text == "Сеансы")
+                {
+
                 }
             }
         }
 
         ////////////////////ДЛЯ КИНОТЕАТРОВ//////////////////////////////////////////
-        private string[] GetCinemasWithAddresses()
-        {
-            Get get = new Get(connection);
-            string[] cinemas = get.Cinemas();
-            List<string> list = new List<string>();
-
-            foreach (var cinema in cinemas)
-                list.Add(cinema + " (" + get.Address(cinema.ToLower()) + ")");
-
-            return list.ToArray();
-        }
         private void AddCinemasToComboBox(string[] cinemas)
         {
             Label label = CreateAndAddCinemaLabel();
@@ -166,11 +162,6 @@ namespace CourseWork
         }
 
         ////////////////////ДЛЯ ФИЛЬМОВ//////////////////////////////////////////////
-        private string[] GetInfoAboutFilms()
-        {
-            Get get = new Get(connection);
-            return get.InfoAboutFilms();
-        }
         private void AddFilmsToComboBox(string[] films)
         {
             Label label = CreateAndAddFilmLabel();
