@@ -31,7 +31,20 @@ namespace CourseWork
 
         private void Change_button_Click(object sender, EventArgs e)
         {
+            string new_capacity = GetCapacityFromTextBox();
 
+            if (new_capacity != "" && HallSelected() && CinemaSelected())
+            {
+                if (action.UpdateHall(cinema_id, old_hall_humber, new_capacity))
+                {
+                    MessageBox.Show("Данные были успешно изменены!", "Оповещение");
+                    FillHallComboBox(cinema_id);
+                }
+                else
+                    MessageBox.Show("Зал с таким номером уже существует!", "Ошибка!");
+            }
+            else
+                MessageBox.Show("Введите необходимые данные!", "Ошибка!");
         }
 
         private void Backwards_button_Click(object sender, EventArgs e) => Close();
@@ -102,13 +115,14 @@ namespace CourseWork
 
         private void SetFields(string old_hall_humber, string capacity)
         {
-            hall_number_textBox.Text = old_hall_humber;
             capacity_textBox.Text = capacity;
         }
 
         private string GetCinemaDescFromComboBox() => cinema_comboBox.SelectedItem.ToString();
         private string GetHallNumberFormComboBox() => hall_comboBox.SelectedItem.ToString();
-        private string GetNewHallNumberFromTextBox() => hall_number_textBox.Text;
         private string GetCapacityFromTextBox() => capacity_textBox.Text;
+
+        private bool CinemaSelected() => cinema_comboBox.Items != null;
+        private bool HallSelected() => hall_comboBox.Items != null;
     }
 }
