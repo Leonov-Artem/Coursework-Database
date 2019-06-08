@@ -76,9 +76,7 @@ namespace CourseWork
                         ShowAddNewHall();
 
                     else if (selected_action.Text == "Изменить данные")
-                    {
-
-                    }
+                        ShowChangeHallsInfo();
                     else if (selected_action.Text == "Удалить данные")
                     {
 
@@ -243,6 +241,11 @@ namespace CourseWork
         {
             AddNewHall addNewHall = new AddNewHall(connection);
             addNewHall.ShowDialog();
+        }
+        private void ShowChangeHallsInfo()
+        {
+            ChangeHallsInfo changeHallsInfo = new ChangeHallsInfo(connection);
+            changeHallsInfo.ShowDialog();
         }
         private void ShowAddNewCinemaForm()
         {
