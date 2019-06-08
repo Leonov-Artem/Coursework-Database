@@ -10,7 +10,8 @@ namespace CourseWork
     public partial class ChangeInformation : Form
     {
         MySqlConnection connection;
-        List<Control> controls = new List<Control>();
+        List<Control> list_controls = new List<Control>();
+        List<Control> hall_controls = new List<Control>();
         Get get;
         Action action;
 
@@ -113,7 +114,8 @@ namespace CourseWork
                 }
                 else if (selected_information.Text == "Залы")
                 {
-
+                    string[] cinemas = get.CinemasWithAddresses();
+                    AddCinemasToComboBox2(cinemas);
                 }
                 else if (selected_information.Text == "Сеансы")
                 {
@@ -122,14 +124,24 @@ namespace CourseWork
             }
         }
 
+        private void cinema_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
+
+            string cinema_desc = comboBox.SelectedItem.ToString();
+            string cinema_id = get.CinemaId(cinema_desc);
+            string[] halls = get.HallsNumbers(cinema_id);
+            AddHallsToComboBox(halls);
+        }
+
         ////////////////////ДЛЯ КИНОТЕАТРОВ//////////////////////////////////////////
         private void AddCinemasToComboBox(string[] cinemas)
         {
             Label label = CreateAndAddCinemaLabel();
             ComboBox comboBox = CreateAndAddCinemaComboBox(label);
 
-            controls.Add(label);
-            controls.Add(comboBox);
+            list_controls.Add(label);
+            list_controls.Add(comboBox);
 
             int max = cinemas.Max(x => x.Length);
             comboBox.Width = 5 * max + 30;
@@ -144,7 +156,7 @@ namespace CourseWork
             label.Location = new Point(information_groupBox.Location.X, information_groupBox.Location.Y + information_groupBox.Size.Height + 10);
             Controls.Add(label);
 
-            controls.Add(label);
+            list_controls.Add(label);
 
             return label;
         }
@@ -164,8 +176,8 @@ namespace CourseWork
             Label label = CreateAndAddFilmLabel();
             ComboBox comboBox = CreateAndAddFilmComboBox(label);
 
-            controls.Add(label);
-            controls.Add(comboBox);
+            list_controls.Add(label);
+            list_controls.Add(comboBox);
 
             int max = films.Max(x => x.Length);
             comboBox.Width = 5 * max + 30;
@@ -183,6 +195,80 @@ namespace CourseWork
             return label;
         }
         private ComboBox CreateAndAddFilmComboBox(Label label)
+        {
+            ComboBox comboBox = new ComboBox();
+            comboBox.Location = new Point(label.Location.X + label.Width, label.Location.Y);
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            Controls.Add(comboBox);
+
+            return comboBox;
+        }
+
+        ////////////////////ДЛЯ ЗАЛОВ///////////////////////////////////////////////
+        private void AddCinemasToComboBox2(string[] cinemas)
+        {
+            Label label = CreateAndAddCinemaLabel2();
+            ComboBox comboBox = CreateAndAddCinemaComboBox2(label);
+
+            list_controls.Add(label);
+            list_controls.Add(comboBox);
+
+            int max = cinemas.Max(x => x.Length);
+            comboBox.Width = 5 * max + 30;
+
+            foreach (var cinema in cinemas)
+                comboBox.Items.Add(cinema);
+        }
+        private Label CreateAndAddCinemaLabel2()
+        {
+            Label label = new Label();
+            label.Text = "Кинотеатры: ";
+            label.Location = new Point(information_groupBox.Location.X, information_groupBox.Location.Y + information_groupBox.Size.Height + 10);
+            Controls.Add(label);
+
+            list_controls.Add(label);
+
+            return label;
+        }
+        private ComboBox CreateAndAddCinemaComboBox2(Label label)
+        {
+            ComboBox comboBox = new ComboBox();
+            comboBox.Location = new Point(label.Location.X + label.Width, label.Location.Y);
+            comboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox.SelectedIndexChanged += new System.EventHandler(cinema_comboBox_SelectedIndexChanged);
+
+            Controls.Add(comboBox);
+
+            return comboBox;
+        }
+
+        private void AddHallsToComboBox(string[] halls)
+        {
+            DeleteHallsContols();
+            Label label = CreateAndAddHallLabel();
+            ComboBox comboBox = CreateAndAddHallsCombobox(label);
+
+            hall_controls.Add(label);
+            hall_controls.Add(comboBox);
+
+            int max = halls.Max(x => x.Length);
+            comboBox.Width = 5 * max + 30;
+
+            foreach (var hall in halls)
+                comboBox.Items.Add(hall);
+        }
+        private Label CreateAndAddHallLabel()
+        {
+            Label label = new Label();
+            label.Text = "Залы: ";
+            label.Location = new Point(information_groupBox.Location.X, information_groupBox.Location.Y + information_groupBox.Size.Height + 40);
+            Controls.Add(label);
+
+            list_controls.Add(label);
+
+            return label;
+        }
+        private ComboBox CreateAndAddHallsCombobox(Label label)
         {
             ComboBox comboBox = new ComboBox();
             comboBox.Location = new Point(label.Location.X + label.Width, label.Location.Y);
@@ -236,6 +322,27 @@ namespace CourseWork
             else
                 MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
         }
+        private void DeleteHall()
+        {
+            ComboBox comboBox = SomeElementsComboBoxSelected(this.Controls);
+
+            if (comboBox != null)
+            {
+
+                //string address_id = get.AddressId(street_name, house_number);
+
+                //if (action.DeleteCinema(cinema_name, address_id))
+                //{
+                //    MessageBox.Show($"Кинотеатр '{cinema_name}' был успешно удален!", "Оповещение");
+                //    comboBox.Items.Remove(cinema);
+                //    action.DeleteAddress(address_id);
+                //}
+                //else
+                //    MessageBox.Show("Проверьте выбранные данные", "Ошибка!");
+            }
+            else
+                MessageBox.Show("Выберите нужные параметры!", "Ошибка!");
+        }
 
         private void ShowAddNewHall()
         {
@@ -271,13 +378,23 @@ namespace CourseWork
         ///////////////////////ДОПОЛНИТЕЛЬНЫЕ МЕТОДЫ////////////////////////////////
         private void DeleteAllNewControls()
         {
-            if (controls.Count != 0)
+            if (list_controls.Count != 0)
             {
-                foreach (var control in controls)
+                foreach (var control in list_controls)
                     Controls.Remove(control);
             }
 
-            controls.Clear();
+            list_controls.Clear();
+        }
+        private void DeleteHallsContols()
+        {
+            if (hall_controls.Count != 0)
+            {
+                foreach (var control in hall_controls)
+                    Controls.Remove(control);
+            }
+
+            hall_controls.Clear();
         }
         private RadioButton SomeRadioButtonsChecked(Control.ControlCollection controls)
         {

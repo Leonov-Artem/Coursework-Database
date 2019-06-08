@@ -26,5 +26,16 @@ namespace CourseWork
             string slq = $"SELECT get_capacity({cinema_id}, {hall_number});";
             return Command(slq).ExecuteScalar().ToString();
         }
+        public string HallId(string cinema_id, string hall_number)
+        {
+            string sql = $"select get_hall_id({cinema_id}, {hall_number});";
+            return Command(sql).ExecuteScalar().ToString();
+
+        }
+        public bool DeleteHall(string hall_id)
+        {
+            string sql = $"select delete_hall({hall_id});";
+            return (bool)Command(sql).ExecuteScalar();
+        }
     }
 }
