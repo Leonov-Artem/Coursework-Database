@@ -13,10 +13,10 @@ namespace CourseWork
             string sql = $"SELECT add_new_hall({cinemaID}, {hallNumber}, {capacity})";
             return (bool)Command(sql).ExecuteScalar();
         }
-        public bool UpdateHall(string cinemaID, string old_hallNumber, string new_capacity)
+        public void UpdateHall(string cinemaID, string old_hallNumber, string new_capacity)
         {
             string sql = $"CALL update_hall({cinemaID}, {old_hallNumber}, {new_capacity});";
-            return (bool)Command(sql).ExecuteScalar(); 
+             Command(sql).ExecuteScalar(); 
         }
     }
 }

@@ -26,7 +26,7 @@ namespace CourseWork
             action = new Action(connection);
             get = new Get(connection);
 
-            FillCinemaComboBox();
+            ClearAll();
         }
 
         private void Change_button_Click(object sender, EventArgs e)
@@ -35,13 +35,10 @@ namespace CourseWork
 
             if (new_capacity != "" && HallSelected() && CinemaSelected())
             {
-                if (action.UpdateHall(cinema_id, old_hall_humber, new_capacity))
-                {
-                    MessageBox.Show("Данные были успешно изменены!", "Оповещение");
-                    FillHallComboBox(cinema_id);
-                }
-                else
-                    MessageBox.Show("Зал с таким номером уже существует!", "Ошибка!");
+                action.UpdateHall(cinema_id, old_hall_humber, new_capacity);
+                MessageBox.Show("Данные были успешно изменены!", "Оповещение");
+
+                ClearAll();
             }
             else
                 MessageBox.Show("Введите необходимые данные!", "Ошибка!");
@@ -111,6 +108,20 @@ namespace CourseWork
         {
             if (hall_comboBox.Items.Count != 0)
                 hall_comboBox.Items.Clear();
+        }
+        private void ClearAllFields()
+        {
+            cinema_id = "";
+            old_hall_humber = "";
+            capacity_textBox.Text = "";
+        }
+        private void ClearAll()
+        {
+            ClearAllFields();
+            ClearCinemaComboBox();
+            ClearHallComboBox();
+
+            FillCinemaComboBox();
         }
 
         private void SetFields(string old_hall_humber, string capacity)
