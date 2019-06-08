@@ -51,6 +51,12 @@
     <Compile Include="Action\ActionWithCinemas.cs" />
     <Compile Include="Action\ActionWithFilms.cs" />
     <Compile Include="Action\Action.cs" />
+    <Compile Include="Forms\Input\AddNewHall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Input\AddNewHall.Designer.cs">
+      <DependentUpon>AddNewHall.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Change\ChangeMovieInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Input\AddNewFilm.resx">
       <DependentUpon>AddNewFilm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Input\AddNewHall.resx">
+      <DependentUpon>AddNewHall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
