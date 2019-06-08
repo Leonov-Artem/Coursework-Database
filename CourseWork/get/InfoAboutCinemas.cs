@@ -41,6 +41,14 @@ namespace CourseWork
             street = GetStreet(cinema_decription);
             house = GetHouseNumber(cinema_decription);
         }
+        public string CinemaId(string cinema_decription)
+        {
+            NameAndCinemaAddress(cinema_decription, out string cinema_name, out string street, out string house);
+            string address_id = AddressId(street, house);
+            string category = CinemaCategory(cinema_name, address_id);
+
+            return CinemaId(cinema_name, category, address_id);
+        }
 
         static private string GetCinemaName(string cinema_decription)
         {
