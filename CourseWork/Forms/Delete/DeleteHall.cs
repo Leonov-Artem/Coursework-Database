@@ -32,7 +32,23 @@ namespace CourseWork
 
         private void Delete_button_Click(object sender, EventArgs e)
         {
+            var cinema = cinema_comboBox.SelectedItem;
+            var hall = hall_comboBox.SelectedItem;
 
+            if (cinema != null && hall != null)
+            {
+                string cinema_desc = cinema.ToString();
+                string hall_humber = hall.ToString();
+
+                string cinema_id = get.CinemaId(cinema_desc);
+                string hall_id = get.HallId(cinema_id, hall_humber);
+
+                action.DeleteHall(hall_id);
+                hall_comboBox.Items.Remove(hall_humber);
+                MessageBox.Show("Зал был успешно удален!", "Оповещение");
+            }
+            else
+                MessageBox.Show("Выберите все данные!", "Ошибка!");
         }
 
         private void cinema_comboBox_SelectedIndexChanged(object sender, EventArgs e)

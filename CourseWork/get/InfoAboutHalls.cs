@@ -32,10 +32,5 @@ namespace CourseWork
             return Command(sql).ExecuteScalar().ToString();
 
         }
-        public bool DeleteHall(string hall_id)
-        {
-            string sql = $"select delete_hall({hall_id});";
-            return (bool)Command(sql).ExecuteScalar();
-        }
     }
 }

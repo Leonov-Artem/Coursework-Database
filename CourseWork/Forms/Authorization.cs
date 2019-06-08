@@ -30,7 +30,7 @@ namespace CourseWork
             Login = GetLoginFromTextBox();
             Password = GetPasswordFromTextBox();
 
-            if (Login != "" || Password != "")
+            if (Login != "" && Password != "")
             {
                 if (Privilege.UserExist(Login, Password))
                     this.Hide();

@@ -18,5 +18,10 @@ namespace CourseWork
             string sql = $"CALL update_hall({cinemaID}, {old_hallNumber}, {new_capacity});";
              Command(sql).ExecuteScalar(); 
         }
+        public bool DeleteHall(string hall_id)
+        {
+            string sql = $"select delete_hall({hall_id});";
+            return (bool)Command(sql).ExecuteScalar();
+        }
     }
 }
