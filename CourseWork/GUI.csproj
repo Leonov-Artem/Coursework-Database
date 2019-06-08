@@ -52,6 +52,12 @@
     <Compile Include="Action\ActionWithCinemas.cs" />
     <Compile Include="Action\ActionWithFilms.cs" />
     <Compile Include="Action\Action.cs" />
+    <Compile Include="Forms\Change\ChangeHallInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Change\ChangeHallInfo.Designer.cs">
+      <DependentUpon>ChangeHallInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Input\AddNewHall.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,11 +76,11 @@
     <Compile Include="Forms\Input\AddNewFilm.Designer.cs">
       <DependentUpon>AddNewFilm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Change\ChangeCinemaDetails.cs">
+    <Compile Include="Forms\Change\ChangeCinemaInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Change\ChangeCinemaDetails.Designer.cs">
-      <DependentUpon>ChangeCinemaDetails.cs</DependentUpon>
+    <Compile Include="Forms\Change\ChangeCinemaInfo.Designer.cs">
+      <DependentUpon>ChangeCinemaInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Input\AddNewCinema.cs">
       <SubType>Form</SubType>
@@ -112,6 +118,7 @@
     <Compile Include="Get\InfoAboutFilms.cs" />
     <Compile Include="Get\InfoAboutCinemas.cs" />
     <Compile Include="Get\InfoAboutAddresses.cs" />
+    <Compile Include="Get\InfoAboutHalls.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Privilege.cs" />
     <Compile Include="Program.cs" />
@@ -122,11 +129,14 @@
     <Compile Include="Forms\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Change\ChangeHallInfo.resx">
+      <DependentUpon>ChangeHallInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Change\ChangeMovieInfo.resx">
       <DependentUpon>ChangeMovieInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Change\ChangeCinemaDetails.resx">
-      <DependentUpon>ChangeCinemaDetails.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Change\ChangeCinemaInfo.resx">
+      <DependentUpon>ChangeCinemaInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Input\AddNewCinema.resx">
       <DependentUpon>AddNewCinema.cs</DependentUpon>
@@ -175,8 +185,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Delete\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
