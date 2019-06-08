@@ -55,7 +55,7 @@ namespace CourseWork
                 new_genre != "" &&
                 new_duration != "" &&
                 new_description != "" &&
-                new_actors != "")
+                new_actors != "" && FilmSelected())
             {
                 string film_id = get.FilmId(old_name, old_producer, old_year);
                 action.UpdateFilm(film_id, new_name, new_producer, new_country, new_year, new_genre, new_duration, new_description, new_actors);
@@ -109,6 +109,7 @@ namespace CourseWork
             if (films_comboBox.Items.Count != 0)
                 films_comboBox.Items.Clear();
         }
+        private bool FilmSelected() => films_comboBox.SelectedItem != null;
 
         private void SetFields(string name,
                                string producer   ,

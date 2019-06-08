@@ -17,7 +17,6 @@ namespace CourseWork
         Action action;
         Get get;
 
-
         public AddNewHall(MySqlConnection connection)
         {
             InitializeComponent();
@@ -30,7 +29,15 @@ namespace CourseWork
 
         private void Add_button_Click(object sender, EventArgs e)
         {
+            string hall_number = GetHallNumberFromTextBox();
+            string capacity = GetCapacityFromTextBox();
 
+            if (hall_number != "" && capacity != "" && CinemaSelected())
+            {
+
+            }
+            else
+                MessageBox.Show("Введите необходимые данные!", "Ошибка!");
         }
 
         private void Backwards_button_Click(object sender, EventArgs e) => Close();
@@ -55,5 +62,9 @@ namespace CourseWork
             if (cinemas_comboBox.Items.Count != 0)
                 cinemas_comboBox.Items.Clear();
         }
+        private bool CinemaSelected() => cinemas_comboBox.Items != null;
+
+        private string GetHallNumberFromTextBox() => hall_number_textBox.Text;
+        private string GetCapacityFromTextBox() => capacity_textBox.Text;
     }
 }

@@ -43,7 +43,7 @@ namespace CourseWork
             string new_street = GetStreetFromTextBox();
             string new_house = GetHouseFromTextBox();
 
-            if (new_name != "" && new_category != "" && new_street != "" && new_house != "")
+            if (new_name != "" && new_category != "" && new_street != "" && new_house != "" && CinemaSelected())
             {
                 string address_id = get.AddressId(old_street, old_house);
                 string cinema_id = get.CinemaId(old_name, old_category, address_id);
@@ -100,6 +100,7 @@ namespace CourseWork
             if (cinema_comboBox.Items.Count != 0)
                 cinema_comboBox.Items.Clear();
         }
+        private bool CinemaSelected() => cinema_comboBox.SelectedItem != null;
 
         private void SetFields(string name, string category, string street, string house)
         {

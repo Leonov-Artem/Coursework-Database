@@ -71,6 +71,7 @@
             // 
             // cinemas_comboBox
             // 
+            this.cinemas_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cinemas_comboBox.FormattingEnabled = true;
             this.cinemas_comboBox.Location = new System.Drawing.Point(106, 4);
             this.cinemas_comboBox.Name = "cinemas_comboBox";
