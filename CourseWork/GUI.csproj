@@ -52,6 +52,24 @@
     <Compile Include="Action\ActionWithCinemas.cs" />
     <Compile Include="Action\ActionWithFilms.cs" />
     <Compile Include="Action\Action.cs" />
+    <Compile Include="Forms\Delete\DeleteSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Delete\DeleteSession.Designer.cs">
+      <DependentUpon>DeleteSession.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Change\ChangeSessionInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Change\ChangeSessionInfo.Designer.cs">
+      <DependentUpon>ChangeSessionInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Input\AddNewSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Input\AddNewSession.Designer.cs">
+      <DependentUpon>AddNewSession.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Delete\DeleteHall.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,16 +143,37 @@
     <Compile Include="Get\InfoAboutCinemas.cs" />
     <Compile Include="Get\InfoAboutAddresses.cs" />
     <Compile Include="Get\InfoAboutHalls.cs" />
+    <Compile Include="Forms\Reports\MovieRentalReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\MovieRentalReport.Designer.cs">
+      <DependentUpon>MovieRentalReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\MovieSessionReference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\MovieSessionReference.Designer.cs">
+      <DependentUpon>MovieSessionReference.cs</DependentUpon>
+    </Compile>
     <Compile Include="Position.cs" />
     <Compile Include="Privilege.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Forms\Reports.cs">
+    <Compile Include="Forms\Reports\Reports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Reports.Designer.cs">
+    <Compile Include="Forms\Reports\Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Change\ChangeSessionInfo.resx">
+      <DependentUpon>ChangeSessionInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Delete\DeleteSession.resx">
+      <DependentUpon>DeleteSession.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Input\AddNewSession.resx">
+      <DependentUpon>AddNewSession.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Delete\DeleteHall.resx">
       <DependentUpon>DeleteHall.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,8 +207,14 @@
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Reports.resx">
+    <EmbeddedResource Include="Forms\Reports\MovieSessionReference.resx">
+      <DependentUpon>MovieSessionReference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\MovieRentalReport.resx">
+      <DependentUpon>MovieRentalReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

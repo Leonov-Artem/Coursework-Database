@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace CourseWork
 {
-    public partial class Reports : Form
+    public partial class AddNewSession : Form
     {
-        public Reports()
+        public AddNewSession()
         {
             InitializeComponent();
-        }
-
-        private void backwards_button_Click(object sender, EventArgs e) => Close();
-
-        private void view_button_Click(object sender, EventArgs e)
-        {
         }
     }
 }

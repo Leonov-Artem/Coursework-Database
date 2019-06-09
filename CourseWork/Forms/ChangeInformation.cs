@@ -60,15 +60,18 @@ namespace CourseWork
                 {
                     if (selected_action.Text == "Ввести данные")
                     {
-
+                        AddNewSession addNewSession = new AddNewSession();
+                        addNewSession.ShowDialog();
                     }
                     else if (selected_action.Text == "Изменить данные")
                     {
-
+                        ChangeSessionInfo changeSessionInfo = new ChangeSessionInfo();
+                        changeSessionInfo.ShowDialog();
                     }
                     else if (selected_action.Text == "Удалить данные")
                     {
-
+                        DeleteSession deleteSession = new DeleteSession();
+                        deleteSession.ShowDialog();
                     }
                 }
                 else if (selected_information.Text == "Залы")

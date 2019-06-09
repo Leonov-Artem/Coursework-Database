@@ -51,7 +51,7 @@
             this.Reports_button.Name = "Reports_button";
             this.Reports_button.Size = new System.Drawing.Size(293, 34);
             this.Reports_button.TabIndex = 2;
-            this.Reports_button.Text = "Отчеты";
+            this.Reports_button.Text = "Справки/отчеты";
             this.Reports_button.UseVisualStyleBackColor = true;
             this.Reports_button.Click += new System.EventHandler(this.Reports_button_Click);
             // 
