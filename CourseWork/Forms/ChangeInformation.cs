@@ -332,5 +332,11 @@ namespace CourseWork
 
             return list.ToArray();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BuyTicket buyTicket = new BuyTicket();
+            buyTicket.ShowDialog();
+        }
     }
 }

@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace CourseWork
 {
-    public partial class AddNewSession : Form
+    public partial class BuyTicket : Form
     {
-        public AddNewSession()
+        public BuyTicket()
         {
             InitializeComponent();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("В данном зале может быть максимум 180 мест!", "Ошибка!");
         }
     }
 }

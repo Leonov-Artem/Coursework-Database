@@ -39,6 +39,7 @@
             this.radioButton5 = new System.Windows.Forms.RadioButton();
             this.backwards_button = new System.Windows.Forms.Button();
             this.forward_button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.information_groupBox.SuspendLayout();
             this.action_groupBox.SuspendLayout();
             this.SuspendLayout();
@@ -164,7 +165,7 @@
             // 
             // forward_button
             // 
-            this.forward_button.Location = new System.Drawing.Point(133, 323);
+            this.forward_button.Location = new System.Drawing.Point(125, 322);
             this.forward_button.Name = "forward_button";
             this.forward_button.Size = new System.Drawing.Size(95, 32);
             this.forward_button.TabIndex = 3;
@@ -172,11 +173,22 @@
             this.forward_button.UseVisualStyleBackColor = true;
             this.forward_button.Click += new System.EventHandler(this.forward_button_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(240, 322);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 32);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Заказать билет";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ChangeInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(562, 366);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.forward_button);
             this.Controls.Add(this.backwards_button);
             this.Controls.Add(this.action_groupBox);
@@ -206,5 +218,6 @@
         private System.Windows.Forms.RadioButton radioButton5;
         private System.Windows.Forms.Button backwards_button;
         private System.Windows.Forms.Button forward_button;
+        private System.Windows.Forms.Button button1;
     }
 }
