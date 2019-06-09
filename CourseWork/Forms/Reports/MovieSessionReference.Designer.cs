@@ -47,7 +47,7 @@
             this.Backwards_button.Name = "Backwards_button";
             this.Backwards_button.Size = new System.Drawing.Size(95, 32);
             this.Backwards_button.TabIndex = 2;
-            this.Backwards_button.Text = "Сохранить";
+            this.Backwards_button.Text = "Назад";
             this.Backwards_button.UseVisualStyleBackColor = true;
             // 
             // MovieSessionReference

@@ -25,12 +25,14 @@ namespace CourseWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            MovieRentalReport movieRentalReport = new MovieRentalReport();
+            movieRentalReport.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            MovieSessionReference movieSessionReference = new MovieSessionReference();
+            movieSessionReference.ShowDialog();
         }
     }
 }
